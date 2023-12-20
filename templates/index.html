@@ -18,12 +18,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
-        <div class="well">
+      <div class="col-md-3">
+        <div class="well" style="width: 280px; height: 250px;">
           <h5>Country:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-          <h5>Year:</h5>
-          <select id="selDataset_year" onchange="optionChanged(this.value)"></select>
+          <select id="selDataset" class="form-control" onchange="optionChanged(this.value)"></select>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>From Year:</h5>
+              <select id="selDataset_from_year" class="form-control" onchange="optionChanged(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>To Year:</h5>
+              <select id="selDataset_to_year" class="form-control" onchange="optionChanged(this.value)"></select>
+            </div>
+          </div>
+          <h5>Population Attribute:</h5>
+          <select id="selDataset_population_attribute" class="form-control" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -33,9 +43,9 @@
         </div>
       </div>
       <div class="col-md-5">
-        <div id="Duc_plot">Duc's Plot here</div>
+        <div id="Duc_plot"></div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4">
         <div id="Jen_plot">Jen's Plot here</div>
       </div>
     </div>
@@ -43,6 +53,7 @@
       <div class="col-md-12">
         <div id="extra_ifany">EXTRA CHART WILL BE HERE</div>
       </div>
+    </div>
   </div>
   
   <script src="https://d3js.org/d3.v7.min.js"></script>
