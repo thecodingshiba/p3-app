@@ -106,24 +106,46 @@ function loadData(){
       x:countryData.map(x=>x.GDP),
       y:countryData.map(z=>z[selectedKey]),
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
-      text: countryData.map(y => `${selectedKey}: ${z[selectedKey]}, Year: ${y.Year}`)
+      text: countryData.map(y => `${selectedKey}: ${y[selectedKey]}, Year: ${y.Year}`),
+      hoverinfo: 'text',
     };
     // Set the size of the plot
-    let layout = {
-      width: 500,
-      height: 500,
-      showlegend: false,
-      xaxis: {
-        title: {
-          text: 'GDP'  // Set the x-axis title
-        }
-      },
-      yaxis: {
-        title: {
-          text: selectedKey  // Set the y-axis title
-        }
-      }
-    };
+    // Set the size of the plot
+let layout = {
+  width: 500,
+  height: 500,
+  showlegend: false,
+  title: {
+    text: `GDP vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
+    x: 0.5,  // Set the title position to the center
+    font: {
+      size: 18,  // Set the font size
+      family: 'Arial, sans-serif',  // Use a modern sans-serif font
+      color: 'black',  // Set the font color
+      bold: 'bold'  // Make the title bold
+    }
+  },
+  xaxis: {
+    title: {
+      text: 'GDP'  // Set the x-axis title
+    },
+    showline: true,  // Display x-axis line
+    boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+    zeroline: false,  // Do not display x-axis baseline
+    linecolor: 'black',  // Set x-axis line color
+    linewidth: 2  // Set x-axis line width
+  },
+  yaxis: {
+    title: {
+      text: selectedKey  // Set the y-axis title
+    },
+    showline: true,  // Display y-axis line
+    boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+    zeroline: false,  // Do not display y-axis baseline
+    linecolor: 'black',  // Set y-axis line color
+    linewidth: 2  // Set y-axis line width
+  }
+};
     ducPlotContainer.text("");
     Plotly.newPlot('Duc_plot',[lineGraph],layout,{displayModeBar : false});
 
