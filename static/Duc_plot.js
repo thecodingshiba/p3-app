@@ -22,6 +22,7 @@ function optionChanged(selectedValue) {
     // Container and dropdown selection
     const container = d3.select("#well");
     const dropdown = d3.select("#selDataset");
+    const dropdown2 = d3.select("#selDataset_year");
 
     // Remove the loading option
     dropdown.select("option[value='loading']").remove();
@@ -34,8 +35,18 @@ function optionChanged(selectedValue) {
     .append("option")
     .attr("value", d => d)
     .text(d => d);
+
+      // Create options for the dropdown Year
+      const options2 = dropdown2
+      .selectAll("option")
+      .data(x.year.sort())
+      .enter()
+      .append("option")
+      .attr("value", d => d)
+      .text(d => d);
     // Assign the value of the dropdown menu option to a variable
     let dataset = dropdown.property("value");
+    let dataset2=dropdown2.property("value")
 })
   }
 initiateDropdown()
