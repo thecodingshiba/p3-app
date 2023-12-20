@@ -170,6 +170,11 @@ def passengers():
             if row.Country not in unique_countries:
                 unique_countries.append(row.Country)
 
+        unique_years=[]
+        for row in rows:
+            if row.Year not in unique_years:
+                unique_years.append(row.Year)
+
     # Convert rows to a list of dictionaries
     data = [dict(zip(result.keys(), row)) for row in rows]
 
@@ -177,7 +182,8 @@ def passengers():
     # Close the database connection
     engine.dispose()
 
-    return jsonify({"country":unique_countries,
+    return jsonify({"year":unique_years,
+                    "country":unique_countries,
                     "data":data}),201
 
 
