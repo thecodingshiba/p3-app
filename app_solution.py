@@ -164,14 +164,21 @@ def passengers():
         result = connection.execute(select_query)
         # Fetch all rows from the result
         rows = result.fetchall()
+        # Fetch the unique countries from the result
+        unique_countries= []
+        for row in rows:
+            if row.Country not in unique_countries:
+                unique_countries.append(row.Country)
 
     # Convert rows to a list of dictionaries
     data = [dict(zip(result.keys(), row)) for row in rows]
 
+
     # Close the database connection
     engine.dispose()
 
-    return jsonify({"data":data}),201
+    return jsonify({"country":unique_countries,
+                    "data":data}),201
 
 
 if __name__ == '__main__':
