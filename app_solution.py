@@ -175,7 +175,9 @@ def passengers():
             if row.Year not in unique_years:
                 unique_years.append(row.Year)
 
-        population_attributes = [key for key in result.keys() if key not in ["Code", "Country", "Year"]]
+        population_attributes = [key for key in result.keys() if key not in ["Code", "Country", "Year",
+                                                                             "longitude",
+                                                                             "latitude"]]
 
     # Convert rows to a list of dictionaries
     data = [dict(zip(result.keys(), row)) for row in rows]
