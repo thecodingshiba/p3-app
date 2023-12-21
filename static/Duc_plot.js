@@ -136,7 +136,7 @@ function plot_scatter_plot(data,location){
       x:data.map(x=>x[selectedKey_x]),
       y:data.map(z=>z[selectedKey]),
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
-      text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subTex]}`),
+      text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subText]}`),
       hoverinfo: 'text',
     };
     // Set the size of the plot
