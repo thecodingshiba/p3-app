@@ -10,14 +10,18 @@ const dropdown4 = d3.select("#selDataset_to_year");
 const dropdown5 = d3.select("#selDataset_2");
 const dropdown6 = d3.select("#selDataset_against");
 
-const ducPlotContainer = d3.selectAll("#Duc_plot, #Duc_plot_2");
+const ducPlotContainer1 = d3.select("#Duc_plot");
+const ducPlotContainer2 = d3.select("#Duc_plot_2");
 
-ducPlotContainer.text("Loading...");
+ducPlotContainer1.text("Loading...");
+ducPlotContainer2.text("Loading...");
+
 //Functions
 function optionChanged(selectedValue) {
     // Perform actions based on the selected value
     Plotly.purge('Duc_plot')
-    ducPlotContainer.text("Loading...");
+    ducPlotContainer1.text("Loading...");
+    ducPlotContainer2.text("Loading...");
     console.log("Selected country:", selectedValue);
   }
 
@@ -117,12 +121,12 @@ function loadData(){
      y.Year <= parseInt(dropdown4.property("value"))
      );
 
-     plot_scatter_plot(countryData,'Duc_plot')
-     plot_scatter_plot(vscountryData,'Duc_plot_2')
+     plot_scatter_plot(countryData,'Duc_plot',dataset)
+     plot_scatter_plot(vscountryData,'Duc_plot_2',dataset5)
   })
 }
 
-function plot_scatter_plot(data,location){
+function plot_scatter_plot(data,location,country){
     //Get value of y-axis
     let selectedKey = dropdown3.property("value");
     //Get value of x-axis
@@ -146,7 +150,7 @@ let layout = {
   height: 500,
   showlegend: false,
   title: {
-    text: `${selectedKey_x} vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
+    text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey_x} vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
     font: {
       size: 18,  // Set the font size
@@ -176,8 +180,15 @@ let layout = {
     linewidth: 2  // Set y-axis line width
   }
 };
-    ducPlotContainer.text("");
-    Plotly.newPlot(location,[lineGraph],layout,{displayModeBar : false});
+let plotContainer;
+  if (location === 'Duc_plot') {
+    plotContainer = ducPlotContainer1;
+  } else if (location === 'Duc_plot_2') {
+    plotContainer = ducPlotContainer2;
+  }
+
+  plotContainer.text("");
+  Plotly.newPlot(location, [lineGraph], layout, { displayModeBar: false });
 
 }
 initiateDropdown()
