@@ -7,7 +7,10 @@ const dropdown = d3.select("#selDataset");
 const dropdown2 = d3.select("#selDataset_from_year");
 const dropdown3 = d3.select("#selDataset_population_attribute");
 const dropdown4 = d3.select("#selDataset_to_year");
-const ducPlotContainer = d3.select("#Duc_plot");
+const dropdown5 = d3.select("#selDataset_2");
+const dropdown6 = d3.select("#selDataset_against");
+
+const ducPlotContainer = d3.selectAll("#Duc_plot, #Duc_plot_2");
 
 ducPlotContainer.text("Loading...");
 //Functions
@@ -19,10 +22,6 @@ function optionChanged(selectedValue) {
   }
 
 function initiateDropdown(){
-        // Container and dropdown selection
-        const container = d3.select("#well");
-        const dropdown = d3.select("#selDataset");
-    
         // Add an initial loading option
         dropdown.append("option")
         .attr("value", "loading")
@@ -33,8 +32,17 @@ function initiateDropdown(){
     // Remove the loading option
     dropdown.select("option[value='loading']").remove();
 
-    // Create options for the dropdown
+    // Create options for the dropdown Country
     const options = dropdown
+    .selectAll("option")
+    .data(x.country.sort())
+    .enter()
+    .append("option")
+    .attr("value", d => d)
+    .text(d => d);
+
+    // Create options for the dropdown vs Country
+    const options5 = dropdown5
     .selectAll("option")
     .data(x.country.sort())
     .enter()
@@ -69,6 +77,15 @@ function initiateDropdown(){
       .attr("value", d => d)
       .text(d => d);
 
+      // Create options for the dropdown
+    const options6 = dropdown6
+    .selectAll("option")
+    .data(['GDP',"Year"])
+    .enter()
+    .append("option")
+    .attr("value", d => d)
+    .text(d => d);
+
     loadData()
 })
   }
@@ -80,6 +97,8 @@ function loadData(){
     let dataset2 = dropdown2.property("value");
     let dataset3 = dropdown3.property("value");
     let dataset4 = dropdown4.property("value");
+    let dataset5 = dropdown5.property("value");
+    let dataset6 = dropdown6.property("value");
 
     if (parseInt(dropdown2.property("value")) >= parseInt(dropdown4.property("value"))) {
         dropdown4.property("value", (parseInt(dropdown2.property("value")) + 1).toString());
@@ -93,14 +112,31 @@ function loadData(){
      y.Year <= parseInt(dropdown4.property("value"))
      );
     
-     //Get value of y-axis
+     let vscountryData=x.data.filter(y => y.Country.toString() === dataset5 &&
+     y.Year >= parseInt(dropdown2.property("value")) &&
+     y.Year <= parseInt(dropdown4.property("value"))
+     );
+
+     plot_scatter_plot(countryData,'Duc_plot')
+     plot_scatter_plot(vscountryData,'Duc_plot_2')
+  })
+}
+
+function plot_scatter_plot(data,location){
+    //Get value of y-axis
     let selectedKey = dropdown3.property("value");
+    //Get value of x-axis
+    let selectedKey_x=dropdown6.property("value");
+    let subText="Year"
+    if(subText===selectedKey_x){
+      subText="GDP"
+    };
     //Plot
     let lineGraph={
-      x:countryData.map(x=>x.GDP),
-      y:countryData.map(z=>z[selectedKey]),
+      x:data.map(x=>x[selectedKey_x]),
+      y:data.map(z=>z[selectedKey]),
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
-      text: countryData.map(y => `${selectedKey}: ${y[selectedKey]}, Year: ${y.Year}`),
+      text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subTex]}`),
       hoverinfo: 'text',
     };
     // Set the size of the plot
@@ -110,7 +146,7 @@ let layout = {
   height: 500,
   showlegend: false,
   title: {
-    text: `GDP vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
+    text: `${selectedKey_x} vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
     font: {
       size: 18,  // Set the font size
@@ -121,7 +157,7 @@ let layout = {
   },
   xaxis: {
     title: {
-      text: 'GDP'  // Set the x-axis title
+      text: `${selectedKey_x}`  // Set the x-axis title
     },
     showline: true,  // Display x-axis line
     boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
@@ -141,12 +177,9 @@ let layout = {
   }
 };
     ducPlotContainer.text("");
-    Plotly.newPlot('Duc_plot',[lineGraph],layout,{displayModeBar : false});
-
-  })
+    Plotly.newPlot(location,[lineGraph],layout,{displayModeBar : false});
 
 }
-  
 initiateDropdown()
 // Call updatePlotly() when a change takes place to the DOM
-d3.selectAll("#selDataset, #selDataset_from_year, #selDataset_population_attribute, #selDataset_to_year").on("change", loadData);
+d3.selectAll("#selDataset, #selDataset_2, #selDataset_from_year, #selDataset_population_attribute, #selDataset_to_year, #selDataset_against").on("change", loadData);

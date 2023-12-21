@@ -19,9 +19,19 @@
     </div>
     <div class="row">
       <div class="col-md-3">
-        <div class="well" style="width: 280px; height: 250px;">
-          <h5>Country:</h5>
-          <select id="selDataset" class="form-control" onchange="optionChanged(this.value)"></select>
+        <div class="well" style="width: 280px; height: 320px;">
+
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Country:</h5>
+              <select id="selDataset" style="font-size: 10px;" class="form-control" onchange="optionChanged(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>vs Country:</h5>
+              <select id="selDataset_2" style="font-size: 10px;" class="form-control" onchange="optionChanged(this.value)"></select>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-6">
               <h5>From Year:</h5>
@@ -32,8 +42,12 @@
               <select id="selDataset_to_year" class="form-control" onchange="optionChanged(this.value)"></select>
             </div>
           </div>
+
           <h5>Population Attribute:</h5>
           <select id="selDataset_population_attribute" class="form-control" onchange="optionChanged(this.value)"></select>
+        
+          <h5>against:</h5>
+          <select id="selDataset_against" class="form-control" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -46,7 +60,7 @@
         <div id="Duc_plot"></div>
       </div>
       <div class="col-md-4">
-        <div id="Jen_plot">Jen's Plot here</div>
+        <div id="Duc_plot_2"></div>
       </div>
     </div>
     <div class="row">
