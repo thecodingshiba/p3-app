@@ -98,11 +98,7 @@ function loadData(){
   console.log("Loading data")  
     // Assign the value of the dropdown menu option to a variable
     let dataset = dropdown.property("value");
-    let dataset2 = dropdown2.property("value");
-    let dataset3 = dropdown3.property("value");
-    let dataset4 = dropdown4.property("value");
     let dataset5 = dropdown5.property("value");
-    let dataset6 = dropdown6.property("value");
 
     if (parseInt(dropdown2.property("value")) >= parseInt(dropdown4.property("value"))) {
         dropdown4.property("value", (parseInt(dropdown2.property("value")) + 1).toString());
@@ -150,7 +146,7 @@ let layout = {
   height: 500,
   showlegend: false,
   title: {
-    text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey_x} vs ${selectedKey} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
+    text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey} by ${selectedKey_x} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
     font: {
       size: 18,  // Set the font size
