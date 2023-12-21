@@ -1,7 +1,14 @@
 // Define the URL for the JSON file
 const jsonUrl = "http://127.0.0.1:5000/api/population";
 
+// Container and dropdown selection
+const container = d3.select("#well");
+const dropdown = d3.select("#selDataset");
+const dropdown2 = d3.select("#selDataset_from_year");
+const dropdown3 = d3.select("#selDataset_population_attribute");
+const dropdown4 = d3.select("#selDataset_to_year");
 const ducPlotContainer = d3.select("#Duc_plot");
+
 ducPlotContainer.text("Loading...");
 //Functions
 function optionChanged(selectedValue) {
@@ -23,12 +30,6 @@ function initiateDropdown(){
 
         d3.json(jsonUrl)
 .then(x=>{
-    // Container and dropdown selection
-    const container = d3.select("#well");
-    const dropdown = d3.select("#selDataset");
-    const dropdown2 = d3.select("#selDataset_from_year");
-    const dropdown3 = d3.select("#selDataset_population_attribute");
-    const dropdown4 = d3.select("#selDataset_to_year");
     // Remove the loading option
     dropdown.select("option[value='loading']").remove();
 
@@ -73,14 +74,7 @@ function initiateDropdown(){
   }
 
 function loadData(){
-  console.log("Loading data")
-    // Dropdown selection
-    const dropdown = d3.select("#selDataset");
-    const dropdown2 = d3.select("#selDataset_from_year");
-    const dropdown3 = d3.select("#selDataset_population_attribute");
-    const dropdown4 = d3.select("#selDataset_to_year");
-
-    
+  console.log("Loading data")  
     // Assign the value of the dropdown menu option to a variable
     let dataset = dropdown.property("value");
     let dataset2 = dropdown2.property("value");
