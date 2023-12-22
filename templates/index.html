@@ -20,7 +20,6 @@
     <div class="row">
       <div class="col-md-3">
         <div class="well" style="width: 280px; height: 320px;">
-
           <div class="row">
             <div class="col-md-6">
               <h5>Country:</h5>
@@ -64,8 +63,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <div id="extra_ifany">EXTRA CHART WILL BE HERE</div>
+      <div class="col-md-12 jumbotron text-center">
+        <h3>Regional Populations</h2>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="jumbotron col-md-3">
+        <div class="row">
+          <div >
+            <h5>Region:</h5>
+            <select id="region_option" class="form-control" onchange="optionChanged(this.value)"></select>
+          </div>
+        </div>
+        <div class="row">
+          <div >
+            <h5>Year:</h5>
+            <select id="year_option" class="form-control" onchange="optionChanged(this.value)"></select>
+          </div>
+          </div>
+      </div>
+      <div class="col-md-9">
+      <div id="bubble"></div>
       </div>
     </div>
   </div>
@@ -74,5 +92,6 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="../static/plot.js"></script>
   <script src="../static/Duc_plot.js"></script>
+  <script src="../static/Bich_plot.js"></script>
 </body>
 </html>
