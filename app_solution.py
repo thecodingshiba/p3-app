@@ -142,30 +142,6 @@ def gdp_data():
     session.close()
     return jsonify({table_name+'_data': results_data}), 200
 
-@app.route("/api/region")
-def region_data():
-    # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
-
-    Base = automap_base()
-    # reflect the tables
-    Base.prepare(autoload_with=engine)
-    session = Session(engine)
-    conn = engine.connect()
-    table_name="region_population"
-    query = f"SELECT country, year, totpopjan_thousands, popdensity_personssqkm, medage_years, popannualdoublingtime_years FROM {table_name};"
-    results = session.execute(text(query))
-    results_data=[{ 'country':result.country,
-                    'year':result.year,
-                    'totpopjan_thousands':result.totpopjan_thousands,
-                    'popdensity_personssqkm':result.popdensity_personssqkm,
-                    'medage_years':result.medage_years,
-                    'popannualdoublingtime_years':result.popannualdoublingtime_years,
-                    } for result in results]
-    session.close()
-    return jsonify(results_data), 200
-
 @app.route("/api/population")
 def passengers():
     engine = create_engine(
@@ -214,6 +190,29 @@ def passengers():
                     "population_attribute":population_attributes,
                     "data":data}),201
 
+@app.route("/api/region/<region>")
+def region_data(region=None):
+    # reflect an existing database into a new model
+    engine = create_engine(
+        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+
+    Base = automap_base()
+    # reflect the tables
+    Base.prepare(autoload_with=engine)
+    session = Session(engine)
+    conn = engine.connect()
+    table_name="region_population"
+    query = f"SELECT country, year, totpopjan_thousands, popdensity_personssqkm, medage_years, popannualdoublingtime_years FROM {table_name} where country='{region}'"
+    results = session.execute(text(query))
+    results_data=[{ 'country':result.country,
+                    'year':result.year,
+                    'totpopjan_thousands':result.totpopjan_thousands,
+                    'popdensity_personssqkm':result.popdensity_personssqkm,
+                    'medage_years':result.medage_years,
+                    'popannualdoublingtime_years':result.popannualdoublingtime_years,
+                    } for result in results]
+    session.close()
+    return jsonify(results_data), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

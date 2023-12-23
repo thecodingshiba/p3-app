@@ -72,13 +72,23 @@
         <div class="row">
           <div >
             <h5>Region:</h5>
-            <select id="region_option" class="form-control" onchange="optionChanged(this.value)"></select>
+            <select id="region_option" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="WORLD">WORLD</option>
+              <option value="EUROPE">EUROPE</option>
+              <option value="AFRICA">AFRICA</option>
+              <option value="ASIA">ASIA</option>
+              <option value="LATIN AMERICA AND THE CARIBBEAN">LATIN AMERICA AND THE CARIBBEAN</option>
+              <option value="NORTH AMERICA">NORTH AMERICA</option>
+              <option value="OCEANIA">OCEANIA</option>
+            </select>
           </div>
         </div>
         <div class="row">
           <div >
             <h5>Year:</h5>
-            <select id="year_option" class="form-control" onchange="optionChanged(this.value)"></select>
+            <select id="type" class="form-control" onchange="optionChanged(this.value)">
+            
+            </select>
           </div>
           </div>
       </div>
@@ -91,7 +101,7 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="../static/plot.js"></script>
-  <script src="../static/Duc_plot.js"></script>
+  <!-- <script src="../static/Duc_plot.js"></script> -->
   <script src="../static/Bich_plot.js"></script>
 </body>
 </html>
