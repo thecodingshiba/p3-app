@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func, text,MetaData, Table, Column, Integer, Numeric, String, select
+from sqlalchemy import create_engine, func, text,MetaData, Table, Column, Integer, Numeric, String, select,column
 
 from flask import Flask, jsonify
 from flask import render_template
@@ -131,7 +131,6 @@ def gdp_data():
     # reflect the tables
     Base.prepare(autoload_with=engine)
     session = Session(engine)
-    conn = engine.connect()
     table_name="gpd_data"
     query = f"SELECT * FROM {table_name};"
     results = session.execute(text(query))
@@ -167,14 +166,14 @@ def region_data():
     return jsonify(results_data), 200
 
 @app.route("/api/population")
-def passengers():
+def population():
     engine = create_engine(
         "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
     # Create a MetaData object
     metadata = MetaData()
 
     # Table name
-    table_name = 'Population_vs_GDP'
+    table_name = 'population_vs_gdp'
 
     # Reflect the existing table
     newTable = Table(table_name, metadata, autoload_with=engine)
@@ -203,7 +202,7 @@ def passengers():
                                                                              "latitude"]]
 
     # Convert rows to a list of dictionaries
-    data = [dict(zip(result.keys(), row)) for row in rows]
+    # data = [dict(zip(result.keys(), row)) for row in rows]
 
 
     # Close the database connection
@@ -212,8 +211,35 @@ def passengers():
     return jsonify({"year":unique_years,
                     "country":unique_countries,
                     "population_attribute":population_attributes,
-                    "data":data}),201
+                    }),201
 
+@app.route("/api/population/<population_attribute>")
+def population_attribute(population_attribute):
+    # reflect an existing database into a new model
+    engine = create_engine(
+        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+
+    metadata = MetaData()
+
+    # Table name
+    table_name = "population_vs_gdp"
+
+    # Create a select query using SQLAlchemy's select function
+    select_query = text(
+        f'SELECT "GDP", "Country", "Year", "{population_attribute}" FROM {table_name};'
+    )
+
+    with engine.connect() as conn:
+        results = conn.execute(select_query)
+
+        # Fetch all rows from the result
+        rows = results.fetchall()
+        # Use dictionary access for all columns in the result set
+        results_data = [dict(zip(results.keys(), row)) for row in rows]
+
+    # Dispose of the engine to release resources
+    engine.dispose()
+    return jsonify({"data": results_data}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
