@@ -4,7 +4,7 @@ import pandas as pd
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func, text,MetaData, Table, Column, Integer, Numeric, String, select,column
+from sqlalchemy import create_engine, func, text,MetaData, Table, Column, Integer, Numeric, String, select,distinct
 
 from flask import Flask, jsonify
 from flask import render_template
@@ -178,48 +178,33 @@ def population():
     # Reflect the existing table
     newTable = Table(table_name, metadata, autoload_with=engine)
 
-    # Create a select query
-    select_query = select(newTable)
+    # Create a distinct query using SQLAlchemy's text function
+    distinct_countries_query = text(f'SELECT DISTINCT "Country" FROM {table_name}')
+    distinct_years_query = text(f'SELECT DISTINCT "Year" FROM {table_name}')
 
-    # Establish a connection and execute the query
+    # Establish a connection and execute the queries
     with engine.connect() as connection:
-        result = connection.execute(select_query)
-        # Fetch all rows from the result
-        rows = result.fetchall()
-        # Fetch the unique countries from the result
-        unique_countries= []
-        for row in rows:
-            if row.Country not in unique_countries:
-                unique_countries.append(row.Country)
+        distinct_countries = set(row[0] for row in connection.execute(distinct_countries_query).fetchall())
+        distinct_years = set(row[0] for row in connection.execute(distinct_years_query).fetchall())
 
-        unique_years=[]
-        for row in rows:
-            if row.Year not in unique_years:
-                unique_years.append(row.Year)
-
-        population_attributes = [key for key in result.keys() if key not in ["Code", "Country", "Year",
-                                                                             "longitude",
-                                                                             "latitude"]]
-
-    # Convert rows to a list of dictionaries
-    # data = [dict(zip(result.keys(), row)) for row in rows]
-
+        # Exclude specific columns from the population_attributes list
+        excluded_columns = ["Code", "Country", "Year", "longitude", "latitude"]
+        population_attributes = [key for key in newTable.columns.keys() if key not in excluded_columns]
 
     # Close the database connection
     engine.dispose()
 
-    return jsonify({"year":unique_years,
-                    "country":unique_countries,
-                    "population_attribute":population_attributes,
-                    }),201
+    return jsonify({
+        "year": list(distinct_years),
+        "country": list(distinct_countries),
+        "population_attribute": population_attributes
+    }), 201
 
 @app.route("/api/population/<population_attribute>")
 def population_attribute(population_attribute):
     # reflect an existing database into a new model
     engine = create_engine(
         "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
-
-    metadata = MetaData()
 
     # Table name
     table_name = "population_vs_gdp"
