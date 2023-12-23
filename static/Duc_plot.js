@@ -104,7 +104,8 @@ function loadData(){
     if (parseInt(dropdown2.property("value")) >= parseInt(dropdown4.property("value"))) {
         dropdown4.property("value", (parseInt(dropdown2.property("value")) + 1).toString());
   };
-  let amended_jsonUrl=jsonUrl+'/'+ dataset3
+
+  let amended_jsonUrl=jsonUrl+'/'+ dataset3+'/'+dataset.replace(/ /g, '+')+'&'+dataset5.replace(/ /g, '+')
   d3.json(amended_jsonUrl)
   .then(x=>{
     //Filter value:

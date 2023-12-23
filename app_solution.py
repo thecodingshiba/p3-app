@@ -200,27 +200,29 @@ def population():
         "population_attribute": population_attributes
     }), 201
 
-@app.route("/api/population/<population_attribute>")
-def population_attribute(population_attribute):
+@app.route("/api/population/<population_attribute>/<country1>&<country2>")
+def population_attribute(population_attribute, country1, country2):
     # reflect an existing database into a new model
     engine = create_engine(
         "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
-
+    country1 = country1.replace("+"," ")
+    country2 = country2.replace("+"," ")
     # Table name
     table_name = "population_vs_gdp"
-
+    #Set parameters
+    params = {"country1": country1, "country2": country2}
     # Create a select query using SQLAlchemy's select function
     select_query = text(
-        f'SELECT "GDP", "Country", "Year", "{population_attribute}" FROM {table_name};'
+        f'SELECT "GDP", "Country", "Year", "{population_attribute}" FROM {table_name} WHERE "Country" IN (:country1, :country2);'
     )
 
     with engine.connect() as conn:
-        results = conn.execute(select_query)
+        results = conn.execute(select_query,params)
 
-        # Fetch all rows from the result
-        rows = results.fetchall()
+        fetch_results=results.fetchall()
+
         # Use dictionary access for all columns in the result set
-        results_data = [dict(zip(results.keys(), row)) for row in rows]
+        results_data = [dict(zip(results.keys(), result)) for result in fetch_results]
 
     # Dispose of the engine to release resources
     engine.dispose()
