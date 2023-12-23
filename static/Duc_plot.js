@@ -17,7 +17,7 @@ ducPlotContainer1.text("Loading...");
 ducPlotContainer2.text("Loading...");
 
 //Functions
-function optionChanged(selectedValue) {
+function optionChanged_duc(selectedValue) {
     // Perform actions based on the selected value
     Plotly.purge('Duc_plot')
     ducPlotContainer1.text("Loading...");
@@ -99,11 +99,14 @@ function loadData(){
     // Assign the value of the dropdown menu option to a variable
     let dataset = dropdown.property("value");
     let dataset5 = dropdown5.property("value");
+    let dataset3=dropdown3.property("value")
 
     if (parseInt(dropdown2.property("value")) >= parseInt(dropdown4.property("value"))) {
         dropdown4.property("value", (parseInt(dropdown2.property("value")) + 1).toString());
   };
-  d3.json(jsonUrl)
+
+  let amended_jsonUrl=jsonUrl+'/'+ dataset3+'/'+dataset.replace(/ /g, '+')+'&'+dataset5.replace(/ /g, '+')
+  d3.json(amended_jsonUrl)
   .then(x=>{
     //Filter value:
     //Country
