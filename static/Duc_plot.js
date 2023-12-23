@@ -17,7 +17,7 @@ ducPlotContainer1.text("Loading...");
 ducPlotContainer2.text("Loading...");
 
 //Functions
-function optionChanged(selectedValue) {
+function optionChanged_duc(selectedValue) {
     // Perform actions based on the selected value
     Plotly.purge('Duc_plot')
     ducPlotContainer1.text("Loading...");
