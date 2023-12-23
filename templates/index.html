@@ -74,20 +74,24 @@
             <h5>Region:</h5>
             <select id="region_option" class="form-control" onchange="region_option_changed(this.value)">
               <option value="WORLD">WORLD</option>
-              <option value="EUROPE">EUROPE</option>
               <option value="AFRICA">AFRICA</option>
               <option value="ASIA">ASIA</option>
-              <option value="LATIN AMERICA AND THE CARIBBEAN">LATIN AMERICA AND THE CARIBBEAN</option>
-              <option value="NORTH AMERICA">NORTH AMERICA</option>
+              <option value="EUROPE">EUROPE</option>
+              <option value="LATIN_AMERICA_AND_THE_CARIBBEAN">LATIN AMERICA AND THE CARIBBEAN</option>
+              <option value="NORTHERN_AMERICA">NORTHERN AMERICA</option>
               <option value="OCEANIA">OCEANIA</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div >
-            <h5>Year:</h5>
-            <select id="type" class="form-control" onchange="optionChanged(this.value)">
-            
+            <h5>Type:</h5>
+            <select id="type" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="totpopjan_thousands">Total Population '000</option>
+              <option value="popdensity_personssqkm">Population Density per sq/km</option>
+              <option value="medage_years">Median Age in Years</option>
+              <option value="totfertilityrate">Total Fertility Rate</option>
+              <option value="fmortalitybeforeage40_per1000">Female Mortality Rate Before 40 Years '000</option>
             </select>
           </div>
           </div>
@@ -110,7 +114,7 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="../static/plot.js"></script>
-  <script src="../static/Duc_plot.js"></script>
+  <!-- <script src="../static/Duc_plot.js"></script> -->
   <script src="../static/Bich_plot.js"></script>
 </body>
 </html>
