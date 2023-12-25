@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      img {
+        border-radius: 8ppx;
+      }
+    </style>
+    <!-- Our own CSS stylesheet -->
+  <link rel="stylesheet" href="style.css" media="screen">
+
+</head>
+<body >
+
+
+  
+    <div class="container" >
+        <div class="row">
+          <div class="image1"></div>          
+            <h1 >
+              <font color=#0066CC> EC </font>
+              <div class="earth" style="--d:120px"></div>
+              <font color=#d5b825> - </font>
+              <font color=#CC0000> P </font>
+              <div class="earth" style="--d:120px"></div>
+              <font color=#CC0000> P </font>
+            </h1>
+          </div>
+           <header>
+             <h1>EMINƎM</h1>
+             <video autoplay muted loop src="https://www.w3schools.com/html/mov_bbb.mp4">
+             </video>
+           </header>
+            
+          <!--
+            <h1>
+              <font color=#0066CC> EC&#127759; </font>
+              <font color=#d5b825> - </font>
+              <font color=#CC0000> P&#127759;P </font>
+            </h1>
+            -->
+
+            <p>Welcome to a free interactive dashboard <font color=#0066CC> ECO </font><font color=#d5b825> - </font><font color=#CC0000> POP </font>    to explore and analyse Census and GDP data</p>
+            
+            <video autoplay loop volume width=auto height=auto >
+              <source src="Earth.mp4" type="video/mp4" />
+            </video>
+            <button id="myBtn" onclick="myFunction()">Pause</button>
+            
+            <hr>
+            <div>
+            <h2 class="inset">1) Polulation & GDP analysis by country </h2>
+            </div>
+            <div>
+            <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for a individual countries for a selected time frame. The two windows feature allow us to do comparative analysis for two countries simultaneously . </p>
+            </div>
+            <hr>
+            <div>
+            <h2 class="inset">2) Global population anaylsis</h2>
+            </div>
+            <div>
+            <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for all countries and/or subregions together.  </p>
+            </div>
+            <hr>
+            <div>
+            <h2 class="inset">3) Geographical visualisation</h2>
+            </div>
+            <div>
+            <p> The following tool's geographic visualisation facilitates a comparative analysis       of characteristics of GDP and population statistics for every nation on the entire globe. </p>
+            </div>
+            <hr>
+
+        </div>
+    </div>
+
+    <div class="earth">
+    </div>
+    
+    <div class="earth" style="--d:200px">
+    </div>
+    
+    <div class="earth" style="--d:100px">
+    </div>
+
+    <div class="col-md-5">
+        <div id="bar"></div>
+    </div>
+
+    <script>
+      var video = document.getElementById("myVideo");
+      var btn = document.getElementById("myBtn");
+      
+      function myFunction() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "Pause";
+        } else {
+          video.pause();
+          btn.innerHTML = "Play";
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
