@@ -246,6 +246,53 @@ ul li {background: transparent;
         width:100%;
         }
 
+.dropbtn {
+  background-color: transparent;
+  color: rgb(218, 28, 28);
+  padding: 10px;
+  font-size: 1px;
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgb(238, 201, 197);
+  width: auto;
+  height: 130px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: relative;
+  background-color: rgb(210, 76, 103); 
+  color: black;
+  overflow: auto;
+  font-size: 30px;
+  font-family: "Times New Roman";
+  font-weight: bold;
+  width: 230px;
+  overflow: auto;
+  justify-content: center;
+  border-style: inset;
+  border-width: 3px;
+  border-color: rgba(240, 239, 246, 0.261);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.dropdown a:hover {background-color: blue;}
+
+.show {display: block;}
   
   /* Set a margin at the bottom for the map container */
   #map {
@@ -260,8 +307,6 @@ ul li {background: transparent;
   </style>
   
 </head>
-
-
 
 
 <body>
@@ -279,6 +324,7 @@ ul li {background: transparent;
   </header>
 
   <div class="container">
+    
 
     <hr class="n0">
     <hr class="n1">
@@ -288,38 +334,59 @@ ul li {background: transparent;
     <div>
     <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for a individual countries for a selected time frame. The two windows feature allow us to do comparative analysis for two countries simultaneously . </p>
     </div>
-
-
+   
     <div class="row">
+      
       <div class="col-md-3">
+        
         <div class="well" style="width: 500px; height: auto;">
           <div class="row">
+            
             <div class="col-md-6">
+              <div class="dropbtn">
               <h5>Country1:</h5>
-              <select id="selDataset" style="font-size: 100px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+              <select id="selDataset" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+              </div>
             </div>
+            
             <div class="col-md-6">
+              <div class="dropbtn">
               <h5>Country2:</h5>
-              <select id="selDataset_2" style="font-size: 35px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+              <select id="selDataset_2" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6">
+            <div class="dropbtn">
               <h5>Start Year:</h5>
-              <select id="selDataset_from_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+              <select id="selDataset_from_year" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+            </div>
             </div>
             <div class="col-md-6">
+            <div class="dropbtn">
               <h5>End Year:</h5>
-              <select id="selDataset_to_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+              <select id="selDataset_to_year" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+            </div>
             </div>
           </div>
 
-          <h5>Population Attribute:</h5>
-          <select id="selDataset_population_attribute" class="form-control" onchange="optionChanged_duc(this.value)"></select>
-        
-          <h5>Against:</h5>
-          <select id="selDataset_against" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+          <div class="row">
+            <div class="col-md-6">
+            <div class="dropbtn">
+              <h5>Y-axis:</h5>
+              <select id="selDataset_population_attribute" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="dropbtn">
+              <h5>X-axis:</h5>
+              <select id="selDataset_against" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            </div>
+          </div>
+         
         </div>
 
         <!--
@@ -329,7 +396,11 @@ ul li {background: transparent;
           </div>
           <div id="sample-metadata" class="panel-body"></div>
         </div> -->
+       
       </div>
+
+
+
       <div class="col-md-5">
         <div id="Duc_plot"></div>
       </div>
@@ -337,7 +408,7 @@ ul li {background: transparent;
         <div id="Duc_plot_2"></div>
       </div>
     </div>
-   
+    
      <!--
     <hr class="n0">
     <hr class="n1">
@@ -471,5 +542,24 @@ ul li {background: transparent;
   <script src="../static/Duc_plot.js"></script>
   <script src="../static/Bich_plot.js"></script>
   <script src="../static/YH_plot.js"></script>
+  <script>
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+  </script>
 </body>
 </html>

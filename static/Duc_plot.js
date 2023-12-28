@@ -153,17 +153,17 @@ function plot_scatter_plot(data,location,country){
     // Set the size of the plot
     // Set the size of the plot
 let layout = {
-  width: 500,
-  height: 500,
+  width: 600,
+  height: 550,
   showlegend: false,
   
   title: {
     text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey} by ${selectedKey_x} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
     font: {
-      size: 18,  // Set the font size
+      size: 28,  // Set the font size
       family: 'Time New Roman',  // Use a modern sans-serif font
-      color: 'salmon',  // Set the font color
+      color: 'crimson',  // Set the font color
       bold: 'bold'  // Make the title bold
     }
   },
@@ -171,22 +171,59 @@ let layout = {
     title: {
       text: `${selectedKey_x}`  // Set the x-axis title
     },
+    tickangle: 26,
     showline: true,  // Display x-axis line
     boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
     zeroline: false,  // Do not display x-axis baseline
     linecolor: 'black',  // Set x-axis line color
-    linewidth: 3  // Set x-axis line width
-    
+    linewidth: 3, // Set x-axis line width
+    ticklen: 10,
+    tickwidth: 3,
+    tickcolor: 'black',
+    showgrid: false,
+    titlefont: {
+      family: 'Time New Roman',
+      size: 25,
+      color: 'crimson'
+    },
+    tickfont: {
+      family: 'Time New Roman',
+      size: 20,
+      color: 'black'
+    },
+    linecolor: '#636363',
+    linewidth: 6,
+    minor: {
+      ticks: 'inside',
+      ticklen: 50,
+      tickcolor: 'black',
+      tickwidth: 3,
+    }
   },
   yaxis: {
     title: {
       text: selectedKey  // Set the y-axis title
     },
-    showline: true,  // Display y-axis line
+    showline: true,  // Display x-axis line
     boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
-    zeroline: false,  // Do not display y-axis baseline
-    linecolor: 'black',  // Set y-axis line color
-    linewidth: 3  // Set y-axis line width
+    zeroline: false,  // Do not display x-axis baseline
+    linecolor: 'black',  // Set x-axis line color
+    linewidth: 3, // Set x-axis line width
+    ticklen: 10,
+    tickwidth: 3,
+    tickcolor: 'black',
+    titlefont: {
+      family: 'Time New Roman',
+      size: 25,
+      color: 'crimson'
+    },
+    tickfont: {
+      family: 'Time New Roman',
+      size: 20,
+      color: 'black'
+    },
+    linecolor: '#636363',
+    linewidth: 6
   }
 };
 let plotContainer;
