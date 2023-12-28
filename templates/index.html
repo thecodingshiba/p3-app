@@ -1,93 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-      
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project3_Group2</title>
+
+  <style>
+
+.overlayText {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  z-index: 1;
+}
+
+#topText {
+  color: white;
+  font-size: 20px;
+  align-self: center;
+}
+
+.centercontent {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (print), (prefers-reduced-motion: reduce) {
+  .animated {
+      -webkit-animation-duration: 1ms !important;
+      animation-duration: 1ms !important;
+      -webkit-transition-duration: 1ms !important;
+      transition-duration: 1ms !important;
+      -webkit-animation-iteration-count: 1 !important;
+      animation-iteration-count: 1 !important;
+  }
+}
+
+.earth {
+  --d:800px;
+  width: var(--d);
+  height:var(--d);
+  display:inline-block;
+  margin: 5px;
+  border-radius: 50%;
+  box-shadow: -20px -20px 50px 2px #e35858 inset, 0 0 20px 2px #d5b825;
+  background: 
+    url(https://i.stack.imgur.com/3SLqF.jpg)
+    0/auto 100%;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    background-position:200% 0;
+  }
+}
+
+#myVideo {
+  position: fixed;
+  right: 500px;
+  bottom: 500px;
+  width: 80px; 
+  height: 80px;
+  min-width: 50%; 
+  min-height: 50%;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #b21515;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+  
+body {background-image: url('../../static/B1.png');
+      -webkit-background-size: cover; 
+      -moz-background-size: cover;
+      -o-background-size: cover; 
+      height: auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+     }
+
+headerr{
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 200px;
+    background-color: blue;
+    background-size:content;
+    padding : 0px;
+    align-items: center;
     
-    <!-- Our own CSS stylesheet -->
-  <link rel="stylesheet" href="style.css" media="screen">
+}
+
+header {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+video {
+  position: inherit;
+  min-width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+h1 {color: linear-gradient(red, rgb(244, 244, 247));
+    font-family: Times New Roman;
+    font-size: 900%;
+    height: auto;
+    width: auto;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    position: relative;
+    justify-content: right;
+    background: -webkit-linear-gradient(red, rgb(244, 244, 247));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+    }
+ 
+h2  {color: linear-gradient(red, rgb(244, 244, 247));
+     margin: auto;
+     padding: 15px 15px 15px 15px;       
+     margin-top: 10px;
+     margin-bottom: 50px;
+     text-align: left;
+     font-size: 50px;
+     font-weight: 50;
+     text-decoration: line-through;
+     background: -webkit-linear-gradient(red, rgb(244, 244, 247));
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     font-family: "Times New Roman";
+     }
+
+h3   {color: rgba(255, 217, 0, 0.892);
+      margin: auto;
+      justify-content: center;
+      font-stretch: ultra-expanded;
+      font-size: 250%;
+      display: flex;
+      font-family: "Times New Roman";
+      }
+
+h4 {background: transparent;
+    color: white;
+    text-align: left;
+    font-size: 40px;
+    margin: 5px;
+    }
+
+h5 {background: rgb(225, 136, 151);
+    color: black;
+    text-align: left;
+    font-size: 36px;
+    margin: 10px;
+    font-family: "Times New Roman";
+    border-style: inset;
+         border-width: 7px;
+         border-color: white;
+         border-radius: 5px;
+         width: 200px;;
+    }
+     
+p   {color: whitesmoke;
+     margin: auto;
+     padding: 15px 15px 15px 15px;       
+     margin-top: 30px;
+     margin-bottom: 30px;
+     text-align: left;
+     font-size: 35px;
+     font-weight: 900;
+     font-stretch: ultra-expanded;
+     width:90%;
+     }
+     
+h2.inset {border-style: inset;
+         border-width: 8px;
+         border-color: white;
+         border-radius: 5px;
+         width:87%;
+         }
+    
+hr.n0  {display: block;
+     border-style: inset;
+     border-width: 4px;
+     border-color: rgb(243, 138, 138);
+     margin-top: 50px;
+     margin-bottom: 10px;
+     width: 97%;
+    }
+
+hr.n1  {display: block;
+     border-style: inset;
+     border-width: 4px;
+     border-color: rgb(243, 138, 138);
+     margin-top: 10px;
+     margin-bottom: 50px;
+     width: 97%;
+    }
+
+ul {background: transparent;
+    padding: 20px;
+   }
+    
+ul li {background: transparent;
+       color: white;
+       text-align: left;
+       font-size: 30px;
+       margin: 5px;
+       list-style-type: circle;
+      }
+
+.wrapper {position: relative;
+         }
+
+.column{flex: 50%;
+        padding: 5px;
+        }
+
+.column{flex: 50%;
+        padding: 5px;
+        }
+
+.row{display: flex;
+        }
+
+
+.videoo {position: relative;
+        z-index: -1;
+        width:100%;
+        }
+
+  </style>
+  
 </head>
 
 <body>
 
-  <div class="container" >
-        <div>
-             <header>
-              
-                <div class="video">
-                    <video autoplay loop>
-                       <source src="update2.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="overlayText">
-            
-                    <h1>EC<div class="earth" style="--d:180px"></div>-P<div class="earth" style="--d:180px"></div>P</h1>
-              
-                    <h3>Welcome to a free interactive dashboard ECO-POP to explore and analyse Census and GDP data</h3>
-              
-                </div>
-             </header>
+  <header> 
+    <div class="video">
+        <video autoplay loop>
+           <source src="../static/Header1.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlayText">
+        <h1>EC<div class="earth" style="--d:180px"></div>-P<div class="earth" style="--d:180px"></div>P</h1>
+        <h3>Welcome to a free interactive dashboard ECO-POP to explore and analyse Census and GDP data</h3>
+    </div>
+  </header>
 
-            <hr>
-            <div>
-            <h2 class="inset">1) Polulation & GDP analysis by country </h2>
-            </div>
-            <div>
-            <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for a individual countries for a selected time frame. The two windows feature allow us to do comparative analysis for two countries simultaneously . </p>
-            </div>
-            <hr>
-            <div>
-            <h2 class="inset">2) Global population anaylsis</h2>
-            </div>
-            <div>
-            <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for all countries and/or subregions together.  </p>
-            </div>
-            <hr>
-            <div>
-            <h2 class="inset">3) Geographical visualisation</h2>
-            </div>
-            <div>
-            <p> The following tool's geographic visualisation facilitates a comparative analysis       of characteristics of GDP and population statistics for every nation on the entire globe. </p>
-            </div>
-            <hr>
-             
-            
-            
+  <div class="container">
 
+    <hr class="n0">
+    <hr class="n1">
+    <div>
+    <h2 class="inset">1) Population & GDP analysis by country </h2>
+    </div>
+    <div>
+    <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for a individual countries for a selected time frame. The two windows feature allow us to do comparative analysis for two countries simultaneously . </p>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="well" style="width: 500px; height: auto;">
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Country1:</h5>
+              <select id="selDataset" style="font-size: 100px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>Country2:</h5>
+              <select id="selDataset_2" style="font-size: 35px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Start Year:</h5>
+              <select id="selDataset_from_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>End Year:</h5>
+              <select id="selDataset_to_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+          </div>
+
+          <h5>Population Attribute:</h5>
+          <select id="selDataset_population_attribute" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+        
+          <h5>Against:</h5>
+          <select id="selDataset_against" class="form-control" onchange="optionChanged_duc(this.value)"></select>
         </div>
 
-      <div class="row">
-           <div class="column">
-              <div class="earth" style="--d:200px">
-              </div>
+        <!--
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div> -->
+      </div>
+      <div class="col-md-5">
+        <div id="Duc_plot"></div>
+      </div>
+      <div class="col-md-4">
+        <div id="Duc_plot_2"></div>
+      </div>
+    </div>
 
-              <div class="earth" style="--d:150px">
-              </div>
-          
-              <div class="earth" style="--d:100px">
-              </div>
-          </div>
+    <hr class="n0">
+    <hr class="n1">
+
+    <div id="contentBox" style="margin:0px auto; width:90%">
+
+      <!-- columns divs, float left, no margin so there is no space between column, width=1/3 -->
+         <div id="column1" style="float:left; margin:0; width:33%;">
+          <h5>End Year:</h5>
+         </div>
+     
+         <div id="column2" style="float:left; margin:0;width:33%;">
+          <div id="Duc_plot"></div>
+         </div>
+     
+         <div id="column3" style="float:left; margin:0;width:33%">
+          <div id="Duc_plot_2"></div>
+         </div>
+     </div>
+
+    <hr class="n0">
+    <hr class="n1">
+    <hr1>
+    <div>
+    <h2 class="inset">2) Global population anaylsis</h2>
+    </div>
+    <div>
+    <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for all countries and/or subregions together.  </p>
+    </div>
+
+    <div class="row">
       
-          <div class="column">
-            <h4>Collaborators:</h4>
-            <ul>
-              <li>Abhidnya Thakur</li>
-              <li>Bich Jennings</li>
-              <li>Duc Trieu Pham</li>
-              <li>Yared Haile</li>
-            </ul>
+    </div>
+    <div class="col-md-12">
+      <div class="jumbotron col-md-3">
+        <div class="row">
+          <div >
+            <h5>Region:</h5>
+            <select id="region_option" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="WORLD">WORLD</option>
+              <option value="AFRICA">AFRICA</option>
+              <option value="ASIA">ASIA</option>
+              <option value="EUROPE">EUROPE</option>
+              <option value="LATIN_AMERICA_AND_THE_CARIBBEAN">LATIN AMERICA AND THE CARIBBEAN</option>
+              <option value="NORTHERN_AMERICA">NORTHERN AMERICA</option>
+              <option value="OCEANIA">OCEANIA</option>
+            </select>
           </div>
-      </div>  
+        </div>
+        <div class="row">
+          <div >
+            <h5>Type:</h5>
+            <select id="type" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="totpopjan_thousands">Total Population '000</option>
+              <option value="popdensity_personssqkm">Population Density per sq/km</option>
+              <option value="medage_years">Median Age in Years</option>
+              <option value="totfertilityrate">Total Fertility Rate</option>
+              <option value="fmortalitybeforeage40_per1000">Female Mortality Rate Before 40 Years '000</option>
+            </select>
+          </div>
+          </div>
+      </div>
+      <div class="col-md-9">
+      <div id="bubble"></div>
+      </div>
+    </div>
+
+    <hr class="n0">
+    <hr class="n1">
+    <div>
+    <h2 class="inset">3) Geographical visualisation</h2>
+    </div>
+    <div>
+    <p> The following tool's geographic visualisation facilitates a comparative analysis       of characteristics of GDP and population statistics for every nation on the entire globe. </p>
+    </div>
+
+    <hr class="n0">
+    <hr class="n1">
+   
     
-    
+
+    <div class="row">
+      <div class="column">
+         <div class="earth" style="--d:200px">
+         </div>
+
+         <div class="earth" style="--d:150px">
+         </div>
+     
+         <div class="earth" style="--d:100px">
+         </div>
+     </div>
+ 
+     <div class="column">
+       <ul>
+         <li>Abhidnya Thakur</li>
+         <li>Bich Jennings</li>
+         <li>Duc Trieu Pham</li>
+         <li>Yared Haile</li>
+       </ul>
+     </div>
+   </div>  
+
 
   </div>
-
   
- 
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/Duc_plot.js"></script>
+  <script src="../static/Bich_plot.js"></script>
 </body>
 </html>
