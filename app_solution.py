@@ -8,6 +8,8 @@ from sqlalchemy import create_engine, func, text,MetaData, Table, Column, Intege
 
 from flask import Flask, jsonify
 from flask import render_template
+import psycopg2
+from flask import request
 
 #################################################
 # Database Setup
@@ -141,6 +143,35 @@ def gdp_data():
     session.close()
     return jsonify({table_name+'_data': results_data}), 200
 
+
+@app.route("/api/population_of_single_country")
+def population_data_single_country():
+    # reflect an existing database into a new model
+    engine = create_engine(
+        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+
+    Base = automap_base()
+    # reflect the tables
+    Base.prepare(autoload_with=engine)
+    session = Session(engine)
+    country = request.args.get('country')
+    year = request.args.get('year')
+    query = f"""
+    SELECT *
+    FROM population_vs_gdp
+    INNER JOIN world_population ON population_vs_gdp."Country" = world_population."country"
+    AND population_vs_gdp."Year" = world_population."year"
+    WHERE population_vs_gdp."Country" = '{country}'
+    AND population_vs_gdp."Year" = {year}
+"""
+    results = session.execute(text(query), {'country': country, 'year': year})
+    results_data=[
+        {'country':result.country,
+         'year':result.year, 'latitude': result.latitude, 'longitude': result.longitude, 'totalpopjan_thousands': result.totalpopjan_thousands} for result in results
+    ]
+    session.close()
+    return jsonify({'population_data': results_data}), 200
+
 @app.route("/api/population")
 def population():
     engine = create_engine(
@@ -197,6 +228,19 @@ def region_data(region=None,type=None):
     session.close()
     return jsonify(results_data), 200
 
+app.route("/api/population_vs_gdp")
+def population_vs_gdp():
+    engine = create_engine(
+        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    
+    with engine.connect() as connection:
+        query = text("SELECT * FROM population_vs_gdp")
+        results = connection.execute(query)
+        population_vs_gdp_data = [dict(row) for row in results.fetchall()]
+    
+    engine.dispose()
+    
+    return jsonify(population_vs_gdp_data), 200
 @app.route("/api/population/<population_attribute>/<country1>&<country2>")
 def population_attribute(population_attribute, country1, country2):
     # reflect an existing database into a new model
@@ -224,6 +268,16 @@ def population_attribute(population_attribute, country1, country2):
     # Dispose of the engine to release resources
     engine.dispose()
     return jsonify({"data": results_data}), 200
+
+@app.route('/api/population/country')
+def get_countries():
+    # Logic to retrieve country data in JSON format
+    return jsonify({"countries": [...]})
+
+@app.route('/api/population/year')
+def get_years():
+    # Logic to retrieve year data in JSON format
+    return jsonify({"years": [...]})
 
 if __name__ == '__main__':
     app.run(debug=True)

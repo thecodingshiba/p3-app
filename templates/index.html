@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
   <title>Project3_Group2</title>
 
   <style>
@@ -248,7 +249,25 @@ ul li {background: transparent;
 
   </style>
   
+=======
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>POPULATION VS GDP VISUALISATION</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+>>>>>>> c3b829273e5977fa3ba3923871b12ad04651b3fa
 </head>
+
+<style>
+  /* Set a margin at the bottom for the map container */
+  #map {
+    margin-bottom: 40px; /* Adjust this value to your desired margin */
+  }
+
+  /* Optionally, set a border to visualize the margin */
+  #map {
+    border: 1px solid #ccc;
+  }
+</style>
 
 <body>
 
@@ -389,6 +408,7 @@ ul li {background: transparent;
       <div id="bubble"></div>
       </div>
     </div>
+<<<<<<< HEAD
 
     <hr class="n0">
     <hr class="n1">
@@ -427,11 +447,28 @@ ul li {background: transparent;
    </div>  
 
 
+=======
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h3>World Population</h2>
+          <select id="countryDropdown" class="form-control" ></select>
+          <select id="mapYearDropdown" class="form-control" ></select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="map" style="height: 500px;"></div>
+        </div>
+      </div>
+>>>>>>> c3b829273e5977fa3ba3923871b12ad04651b3fa
   </div>
-  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="../static/Duc_plot.js"></script>
   <script src="../static/Bich_plot.js"></script>
+  <script src="../static/YH_plot.js"></script>
 </body>
 </html>
