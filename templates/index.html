@@ -139,7 +139,7 @@ h2  {color: linear-gradient(red, rgb(244, 244, 247));
      margin-top: 10px;
      margin-bottom: 50px;
      text-align: left;
-     font-size: 50px;
+     font-size: 55px;
      font-weight: 50;
      text-decoration: line-through;
      background: -webkit-linear-gradient(red, rgb(244, 244, 247));
@@ -214,6 +214,12 @@ hr.n1  {display: block;
      width: 97%;
     }
 
+.plot  {
+     border-style: inset;
+     border-width: 10px;
+     border-color: rgb(243, 138, 138);
+     }
+
 ul {background: transparent;
     padding: 20px;
    }
@@ -262,6 +268,7 @@ ul li {background: transparent;
   height: 130px;
 }
 
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -280,7 +287,7 @@ ul li {background: transparent;
   justify-content: center;
   border-style: inset;
   border-width: 3px;
-  border-color: rgba(240, 239, 246, 0.261);
+  border-color: crimson;
   border-radius: 5px;
   z-index: 1;
 }
@@ -335,11 +342,11 @@ ul li {background: transparent;
     <p> The following tool is designed to study the numerous population characteristics and the GDP statistics for a individual countries for a selected time frame. The two windows feature allow us to do comparative analysis for two countries simultaneously . </p>
     </div>
    
-    <div class="row">
+    <div class="row justify-content-center">
       
       <div class="col-md-3">
         
-        <div class="well" style="width: 500px; height: auto;">
+        <div class="well" style="width: auto; height: auto;">
           <div class="row">
             
             <div class="col-md-6">
@@ -373,6 +380,7 @@ ul li {background: transparent;
           </div>
 
           <div class="row">
+            
             <div class="col-md-6">
             <div class="dropbtn">
               <h5>Y-axis:</h5>
@@ -385,6 +393,7 @@ ul li {background: transparent;
               <select id="selDataset_against" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
             </div>
             </div>
+          
           </div>
          
         </div>
@@ -398,15 +407,24 @@ ul li {background: transparent;
         </div> -->
        
       </div>
-
-
-
+      
+      
       <div class="col-md-5">
+      <div style="margin-left: 50px;">
+        <div class="plot">
         <div id="Duc_plot"></div>
+        </div>
+      </div>
       </div>
       <div class="col-md-4">
+      <div style="margin-left: 10px;">
+        <div class="plot">
         <div id="Duc_plot_2"></div>
+        </div>
       </div>
+      </div>
+      
+
     </div>
     
      <!--
@@ -443,11 +461,12 @@ ul li {background: transparent;
       
     </div>
     <div class="col-md-12">
-      <div class="jumbotron col-md-3">
+      
         <div class="row">
           <div >
+            <div class="dropbtn">
             <h5>Region:</h5>
-            <select id="region_option" class="form-control" onchange="region_option_changed(this.value)">
+            <select id="region_option" class="dropdown-content" onchange="region_option_changed(this.value)">
               <option value="WORLD">WORLD</option>
               <option value="AFRICA">AFRICA</option>
               <option value="ASIA">ASIA</option>
@@ -456,23 +475,28 @@ ul li {background: transparent;
               <option value="NORTHERN_AMERICA">NORTHERN AMERICA</option>
               <option value="OCEANIA">OCEANIA</option>
             </select>
+            </div>
           </div>
         </div>
         <div class="row">
           <div >
+            <div class="dropbtn">
             <h5>Type:</h5>
-            <select id="type" class="form-control" onchange="region_option_changed(this.value)">
+            <select id="type" class="dropdown-content" onchange="region_option_changed(this.value)">
               <option value="totpopjan_thousands">Total Population '000</option>
               <option value="popdensity_personssqkm">Population Density per sq/km</option>
               <option value="medage_years">Median Age in Years</option>
               <option value="totfertilityrate">Total Fertility Rate</option>
               <option value="fmortalitybeforeage40_per1000">Female Mortality Rate Before 40 Years '000</option>
             </select>
+            </div>
           </div>
           </div>
-      </div>
+      
       <div class="col-md-9">
+      <div class="plot">
       <div id="bubble"></div>
+      </div>
       </div>
     </div>
 

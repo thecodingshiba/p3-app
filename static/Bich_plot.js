@@ -26,19 +26,11 @@ function region_option_changed(selectedValue) {
 function showBubble(data) {
   // Set the size of the plot
   let layout = {
-    width: 500,
-    height: 500,
+    width: 780,
+    height: 550,
+    plot_bgcolor: 'rgb(238, 201, 197)',
+    paper_bgcolor: 'smokewhite',
     showlegend: false,
-    title: {
-      text: ``,  // Set the title text
-      x: 0.5,  // Set the title position to the center
-      font: {
-        size: 18,  // Set the font size
-        family: 'Arial, sans-serif',  // Use a modern sans-serif font
-        color: 'black',  // Set the font color
-        bold: 'bold'  // Make the title bold
-      }
-    }
   };
   let bubble = {
     y: data.raw,
@@ -49,9 +41,12 @@ function showBubble(data) {
       size: data.raw,
       colour: data.raw,
       sizemode: 'area',
+      color: 'crimson',
+      sizeref: 2.0 * Math.max(...data.raw) / (40 ** 2)
+    },
+    hoverinfo: 'text',
 
-     sizeref: 2.0 * Math.max(...data.raw) / (40 ** 2)
-    }
+  
 
   };
   document.querySelector("#bubble").innerHTML = '';
@@ -60,9 +55,6 @@ function showBubble(data) {
 (() => {
   // Container and dropdown selection
   const year_option = d3.select("#year_option");
-  
-
-
 
   // Add an initial loading option
   year_option.attr("value", "loading")

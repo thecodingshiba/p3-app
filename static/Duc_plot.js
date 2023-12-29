@@ -142,21 +142,19 @@ function plot_scatter_plot(data,location,country){
       type: 'scatter',
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
       marker: {
-        color: 'salmon',
+        color: 'crimson',
         size: 10,},
       text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subText]}`),
       hoverinfo: 'text',
-      
-      
- 
     };
     // Set the size of the plot
     // Set the size of the plot
 let layout = {
-  width: 600,
+  width: 580,
   height: 550,
+  plot_bgcolor: 'rgb(238, 201, 197)',
+  paper_bgcolor: 'smokewhite',
   showlegend: false,
-  
   title: {
     text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey} by ${selectedKey_x} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
