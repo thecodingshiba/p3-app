@@ -4,7 +4,6 @@ function region_option_changed(selectedValue) {
   //Plotly.purge('Bich_plot')
   const region_option = d3.select("#region_option").property("value");
   const type_option = d3.select("#type").property("value")
-  console.log(region_option,type_option)
   const region_bubble_chart = d3.select("#bubble");
   
   region_bubble_chart.text("Loading...");
@@ -16,41 +15,39 @@ function region_option_changed(selectedValue) {
         "year": x.map(x => x.year),
         "raw": x.map(x => x.raw)
       }
-
-      // data.year.reduce((a, c) => { a.add(c); return a }, new Set()).forEach(s => year_option.append(() => { const o = document.createElement('option'); o.innerText = s; return o; }));
-      // data.country.reduce((a,c)=> { a.add(c); return a}, new Set()).forEach(s => region_option.append(() => { const o = document.createElement('option'); o.innerText = s; return o; }));
+    
       showBubble(data)
     })
 }
 
 function showBubble(data) {
-  // Set the size of the plot
-  let layout = {
+  // Set title and lables 
+  const region_label = d3.select("#region_option option:checked").text()
+  const type_label = d3.select("#type option:checked").text()
+
+    // Set the size of the plot
+    let layout = {
     width: 780,
     height: 550,
     plot_bgcolor: 'rgb(238, 201, 197)',
     paper_bgcolor: 'smokewhite',
     showlegend: false,
+    xaxis: {
+      title: 'Year'
+    },
+    yaxis: {
+      title: type_label
+    },
+    title: region_label +' '+ type_label+ ' vs Year'
   };
   let bubble = {
     y: data.raw,
     x: data.year,
     type: 'scatter',
-    mode: "markers",
-    marker: {
-      size: data.raw,
-      colour: data.raw,
-      sizemode: 'area',
-      color: 'crimson',
-      sizeref: 2.0 * Math.max(...data.raw) / (40 ** 2)
-    },
-    hoverinfo: 'text',
-
-  
-
+    mode: 'lines+markers'
   };
   document.querySelector("#bubble").innerHTML = '';
-  Plotly.newPlot("bubble", [bubble], layout);
+  Plotly.newPlot("bubble", [bubble], layout)
 }
 (() => {
   // Container and dropdown selection
