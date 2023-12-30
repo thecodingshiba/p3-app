@@ -26,11 +26,69 @@ function region_option_changed(selectedValue) {
 function showBubble(data) {
   // Set the size of the plot
   let layout = {
-    width: 780,
+    width: 800,
     height: 550,
     plot_bgcolor: 'rgb(238, 201, 197)',
     paper_bgcolor: 'smokewhite',
     showlegend: false,
+    xaxis: {
+      title: {
+        text: `Year`  // Set the x-axis title
+      },
+      tickangle: 26,
+      showline: true,  // Display x-axis line
+      boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+      zeroline: false,  // Do not display x-axis baseline
+      linecolor: 'black',  // Set x-axis line color
+      linewidth: 3, // Set x-axis line width
+      ticklen: 10,
+      tickwidth: 3,
+      tickcolor: 'black',
+      showgrid: false,
+      titlefont: {
+        family: 'Time New Roman',
+        size: 25,
+        color: 'crimson'
+      },
+      tickfont: {
+        family: 'Time New Roman',
+        size: 20,
+        color: 'black'
+      },
+      linecolor: '#636363',
+      linewidth: 6,
+      minor: {
+        ticks: 'inside',
+        ticklen: 50,
+        tickcolor: 'black',
+        tickwidth: 3,
+      }
+    },
+    yaxis: {
+      //title: {
+      //  text: `${raw}`  // Set the y-axis title
+      //},
+      showline: true,  // Display x-axis line
+      boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+      zeroline: false,  // Do not display x-axis baseline
+      linecolor: 'black',  // Set x-axis line color
+      linewidth: 3, // Set x-axis line width
+      ticklen: 10,
+      tickwidth: 3,
+      tickcolor: 'black',
+      titlefont: {
+        family: 'Time New Roman',
+        size: 25,
+        color: 'crimson'
+      },
+      tickfont: {
+        family: 'Time New Roman',
+        size: 20,
+        color: 'black'
+      },
+      linecolor: '#636363',
+      linewidth: 6
+    }
   };
   let bubble = {
     y: data.raw,
@@ -45,9 +103,6 @@ function showBubble(data) {
       sizeref: 2.0 * Math.max(...data.raw) / (40 ** 2)
     },
     hoverinfo: 'text',
-
-  
-
   };
   document.querySelector("#bubble").innerHTML = '';
   Plotly.newPlot("bubble", [bubble], layout);

@@ -126,6 +126,14 @@ function loadData(){
   })
 }
 
+function getColor(data) {
+  // enter your conditional coloring code here
+  if (data > 1975) {
+    return 'pink'
+  }
+  return 'blue';
+}
+
 function plot_scatter_plot(data,location,country){
     //Get value of y-axis
     let selectedKey = dropdown3.property("value");
@@ -135,6 +143,7 @@ function plot_scatter_plot(data,location,country){
     if(subText===selectedKey_x){
       subText="GDP"
     };
+
     //Plot
     let lineGraph={
       x:data.map(x=>x[selectedKey_x]),
@@ -142,6 +151,7 @@ function plot_scatter_plot(data,location,country){
       type: 'scatter',
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
       marker: {
+        //color: data.map(x=> getColor(x)),
         color: 'crimson',
         size: 10,},
       text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subText]}`),
@@ -150,8 +160,8 @@ function plot_scatter_plot(data,location,country){
     // Set the size of the plot
     // Set the size of the plot
 let layout = {
-  width: 580,
-  height: 550,
+  width: 550,
+  height: 500,
   plot_bgcolor: 'rgb(238, 201, 197)',
   paper_bgcolor: 'smokewhite',
   showlegend: false,
