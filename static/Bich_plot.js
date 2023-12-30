@@ -4,7 +4,6 @@ function region_option_changed(selectedValue) {
   //Plotly.purge('Bich_plot')
   const region_option = d3.select("#region_option").property("value");
   const type_option = d3.select("#type").property("value")
-  console.log(region_option,type_option)
   const region_bubble_chart = d3.select("#bubble");
   
   region_bubble_chart.text("Loading...");
@@ -16,21 +15,30 @@ function region_option_changed(selectedValue) {
         "year": x.map(x => x.year),
         "raw": x.map(x => x.raw)
       }
-
-      // data.year.reduce((a, c) => { a.add(c); return a }, new Set()).forEach(s => year_option.append(() => { const o = document.createElement('option'); o.innerText = s; return o; }));
-      // data.country.reduce((a,c)=> { a.add(c); return a}, new Set()).forEach(s => region_option.append(() => { const o = document.createElement('option'); o.innerText = s; return o; }));
+    
       showBubble(data)
     })
 }
 
 function showBubble(data) {
   // Set the size of the plot
+  const region_label = d3.select("#region_option option:checked").text()
+  const type_label = d3.select("#type option:checked").text()
   let layout = {
-    width: 800,
+  // Set title and lables 
+    
+    width: 1150,
     height: 550,
     plot_bgcolor: 'rgb(238, 201, 197)',
     paper_bgcolor: 'smokewhite',
     showlegend: false,
+    title: region_label +' '+ type_label+ ' vs Year',
+    font: {
+      size: 28,  // Set the font size
+      family: 'Time New Roman',  // Use a modern sans-serif font
+      color: 'crimson',  // Set the font color
+      bold: 'bold'  // Make the title bold
+    },
     xaxis: {
       title: {
         text: `Year`  // Set the x-axis title
@@ -65,9 +73,9 @@ function showBubble(data) {
       }
     },
     yaxis: {
-      //title: {
-      //  text: `${raw}`  // Set the y-axis title
-      //},
+      title: {
+        text: type_label  // Set the x-axis title
+      },
       showline: true,  // Display x-axis line
       boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
       zeroline: false,  // Do not display x-axis baseline
@@ -89,23 +97,20 @@ function showBubble(data) {
       linecolor: '#636363',
       linewidth: 6
     }
+     
   };
   let bubble = {
     y: data.raw,
     x: data.year,
     type: 'scatter',
-    mode: "markers",
+    mode: 'markers',
     marker: {
-      size: data.raw,
-      colour: data.raw,
-      sizemode: 'area',
-      color: 'crimson',
-      sizeref: 2.0 * Math.max(...data.raw) / (40 ** 2)
-    },
-    hoverinfo: 'text',
+        //color: data.map(x=> getColor(x)),
+        color: 'crimson',
+        size: 10,},
   };
   document.querySelector("#bubble").innerHTML = '';
-  Plotly.newPlot("bubble", [bubble], layout);
+  Plotly.newPlot("bubble", [bubble], layout)
 }
 (() => {
   // Container and dropdown selection
