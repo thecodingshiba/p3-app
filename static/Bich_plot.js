@@ -44,7 +44,7 @@ function showBubble(data) {
     y: data.raw,
     x: data.year,
     type: 'scatter',
-    mode: 'lines+markers'
+    mode: 'markers'
   };
   document.querySelector("#bubble").innerHTML = '';
   Plotly.newPlot("bubble", [bubble], layout)
