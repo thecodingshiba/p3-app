@@ -69,18 +69,23 @@
   min-height: 50%;
 }
 
-#myBtn {
-  width: 200px;
+.myBtn {
+  width: 300px;
   font-size: 18px;
-  padding: 10px;
+  padding: 0px;
   border: none;
-  background: #b21515;
-  color: #ffffff;
+  background: whitesmoke;
+  color: black;
   cursor: pointer;
+  font-family: Times New Roman;
+  font-size: 50px;
+  border-style: inset;
+  border-width: 10px;
+  border-color: salmon;
 }
 
 #myBtn:hover {
-  background: #ddd;
+  background: rgb(243, 138, 138);
   color: black;
 }
   
@@ -487,10 +492,12 @@ ul li {background: transparent;
     <p> The following tool's geographic visualisation facilitates a comparative analysis       of characteristics of GDP and population statistics for every nation on the entire globe. </p>
     </div>
 
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <a href="http://stackoverflow.com"> 
         <button>
-           Map
+          <div class="myBtn">
+            GoToMap
+          </div>
         </button>
       </a>
     </div>
@@ -519,7 +526,6 @@ ul li {background: transparent;
        </ul>
      </div>
    </div>  
-
 
   </div>
 
