@@ -29,14 +29,14 @@ function showBubble(data) {
     
     width: 1150,
     height: 550,
-    plot_bgcolor: 'rgb(238, 201, 197)',
+    plot_bgcolor: 'rgb(238, 206, 173)',
     paper_bgcolor: 'smokewhite',
     showlegend: false,
     title: region_label +' '+ type_label+ ' vs Year',
     font: {
       size: 28,  // Set the font size
       family: 'Time New Roman',  // Use a modern sans-serif font
-      color: 'crimson',  // Set the font color
+      color: '#ef6e04',  // Set the font color
       bold: 'bold'  // Make the title bold
     },
     xaxis: {
@@ -56,7 +56,7 @@ function showBubble(data) {
       titlefont: {
         family: 'Time New Roman',
         size: 25,
-        color: 'crimson'
+        color: '#ef6e04'
       },
       tickfont: {
         family: 'Time New Roman',
@@ -87,7 +87,7 @@ function showBubble(data) {
       titlefont: {
         family: 'Time New Roman',
         size: 25,
-        color: 'crimson'
+        color: '#ef6e04'
       },
       tickfont: {
         family: 'Time New Roman',
@@ -106,7 +106,7 @@ function showBubble(data) {
     mode: 'markers',
     marker: {
         //color: data.map(x=> getColor(x)),
-        color: 'crimson',
+        color: '#ef6e04',
         size: 10,},
   };
   document.querySelector("#bubble").innerHTML = '';

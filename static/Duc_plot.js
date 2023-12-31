@@ -152,7 +152,7 @@ function plot_scatter_plot(data,location,country){
       mode: 'markers',  // Set mode to 'markers' for a scatter plot,
       marker: {
         //color: data.map(x=> getColor(x)),
-        color: 'crimson',
+        color: '#ef6e04',
         size: 10,},
       text: data.map(y => `${selectedKey}: ${y[selectedKey]}, ${subText}: ${y[subText]}`),
       hoverinfo: 'text',
@@ -162,7 +162,7 @@ function plot_scatter_plot(data,location,country){
 let layout = {
   width: 550,
   height: 500,
-  plot_bgcolor: 'rgb(238, 201, 197)',
+  plot_bgcolor: 'rgb(238, 206, 173)',
   paper_bgcolor: 'smokewhite',
   showlegend: false,
   title: {
@@ -171,7 +171,7 @@ let layout = {
     font: {
       size: 28,  // Set the font size
       family: 'Time New Roman',  // Use a modern sans-serif font
-      color: 'crimson',  // Set the font color
+      color: '#ef6e04',  // Set the font color
       bold: 'bold'  // Make the title bold
     }
   },
@@ -192,7 +192,7 @@ let layout = {
     titlefont: {
       family: 'Time New Roman',
       size: 25,
-      color: 'crimson'
+      color: '#ef6e04'
     },
     tickfont: {
       family: 'Time New Roman',
@@ -223,7 +223,7 @@ let layout = {
     titlefont: {
       family: 'Time New Roman',
       size: 25,
-      color: 'crimson'
+      color: '#ef6e04n'
     },
     tickfont: {
       family: 'Time New Roman',
