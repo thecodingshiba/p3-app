@@ -1,14 +1,14 @@
 // Define the URL for the JSON file
-const jsonUrl = "http://127.0.0.1:5000/api/population";
+const jsonUrl    = "http://127.0.0.1:5000/api/population";
 
 // Container and dropdown selection
-const container = d3.select("#well");
-const dropdown = d3.select("#selDataset");
-const dropdown2 = d3.select("#selDataset_from_year");
-const dropdown3 = d3.select("#selDataset_population_attribute");
-const dropdown4 = d3.select("#selDataset_to_year");
-const dropdown5 = d3.select("#selDataset_2");
-const dropdown6 = d3.select("#selDataset_against");
+const container  = d3.select("#well");
+const dropdown   = d3.select("#selDataset");
+const dropdown2  = d3.select("#selDataset_from_year");
+const dropdown3  = d3.select("#selDataset_population_attribute");
+const dropdown4  = d3.select("#selDataset_to_year");
+const dropdown5  = d3.select("#selDataset_2");
+const dropdown6  = d3.select("#selDataset_against");
 
 const ducPlotContainer1 = d3.select("#Duc_plot");
 const ducPlotContainer2 = d3.select("#Duc_plot_2");

@@ -48,95 +48,94 @@
       background-position:200% 0;
      }
     }
+ 
+     /* For Earth animation*/
+    .myBtn {
+      width: 300px;
+      font-size: 18px;
+      padding: 0px;
+      border: none;
+      background: whitesmoke;
+      color: black;
+      cursor: pointer;
+      font-family: Times New Roman;
+      font-size: 50px;
+      border-style: inset;
+      border-width: 10px;
+      border-color: salmon;
+    }
 
-
-.myBtn {
-  width: 300px;
-  font-size: 18px;
-  padding: 0px;
-  border: none;
-  background: whitesmoke;
-  color: black;
-  cursor: pointer;
-  font-family: Times New Roman;
-  font-size: 50px;
-  border-style: inset;
-  border-width: 10px;
-  border-color: salmon;
-}
-
-#myBtn:hover {
-  background: rgb(243, 138, 138);
-  color: black;
-}
+    #myBtn:hover {
+      background: rgb(243, 138, 138);
+      color: black;
+    }
   
-body {background-image: url('../../static/B1.png');
+    /* For background*/
+    body {
+      background-image: url('../../static/B1.png');
       -webkit-background-size: cover; 
       -moz-background-size: cover;
       -o-background-size: cover; 
       height: auto;
       background-repeat: no-repeat;
       background-position: center top;
-     }
+    }
 
-headerr{
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 200px;
-    background-color: blue;
-    background-size:content;
-    padding : 0px;
-    align-items: center;
-    
-}
+    /* For header*/
+    header {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+  
+    /* For Video*/
+    video {
+      position: inherit;
+      min-width: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
 
-header {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-video {
-  position: inherit;
-  min-width: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-h1 {color: linear-gradient(rgb(243, 154, 19), rgb(244, 244, 247));
-    font-family: Times New Roman;
-    font-size: 900%;
-    height: auto;
-    width: auto;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 10px;
-    display: flex;
-    position: relative;
-    justify-content: right;
-    background: -webkit-linear-gradient(rgb(240, 136, 9), rgb(244, 244, 247));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    z-index: 1;
+    /* headline*/
+    h1 {
+      color: linear-gradient(rgb(243, 154, 19), rgb(244, 244, 247));
+      font-family: Times New Roman;
+      font-size: 900%;
+      height: auto;
+      width: auto;
+      margin: auto;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      display: flex;
+      position: relative;
+      justify-content: right;
+      background: -webkit-linear-gradient(rgb(240, 136, 9), rgb(244, 244, 247));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 1;
     }
  
-h2  {color: linear-gradient(red, rgb(244, 244, 247));
-     margin: auto;
-     padding: 15px 15px 15px 15px;       
-     margin-top: 10px;
-     margin-bottom: 50px;
-     text-align: left;
-     font-size: 60px;
-     font-weight: 60;
-     text-decoration: line-through;
-     background: -webkit-linear-gradient(rgb(240, 136, 9), rgb(244, 244, 247));
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     font-family: "Times New Roman";
-     }
+    /* For subheadlines*/
+    h2  {
+      color: linear-gradient(red, rgb(244, 244, 247));
+      margin: auto;
+      padding: 15px 15px 15px 15px;       
+      margin-top: 10px;
+      margin-bottom: 50px;
+      text-align: left;
+      font-size: 60px;
+      font-weight: 60;
+      text-decoration: line-through;
+      background: -webkit-linear-gradient(rgb(240, 136, 9), rgb(244, 244, 247));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: "Times New Roman";
+    }
 
-h3   {color: rgba(255, 217, 0, 0.892);
+    /* For header info*/
+    h3  {
+      color: rgba(255, 217, 0, 0.892);
       margin: auto;
       justify-content: center;
       font-stretch: ultra-expanded;
@@ -144,160 +143,159 @@ h3   {color: rgba(255, 217, 0, 0.892);
       display: flex;
       font-family: "Times New Roman";
       }
+    
+    /* For header info*/
+    h4 {
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-size: 40px;
+      margin: 5px;
+      }
 
-h4 {background: transparent;
-    color: white;
-    text-align: left;
-    font-size: 40px;
-    margin: 5px;
-    }
-
-h5 {background: rgb(225, 136, 151);
-    color: black;
-    text-align: left;
-    font-size: 36px;
-    margin: 10px;
-    font-family: "Times New Roman";
-    border-style: inset;
-         border-width: 7px;
-         border-color: white;
-         border-radius: 5px;
-         width: 200px;;
+    /* For dropdown label text*/
+    h5 {
+      background: rgb(225, 136, 151);
+      color: black;
+      text-align: left;
+      font-size: 36px;
+      margin: 10px;
+      font-family: "Times New Roman";
+      border-style: inset;
+      border-width: 7px;
+      border-color: white;
+      border-radius: 5px;
+      width: 200px;;
     }
      
-p   {color: whitesmoke;
-     margin: auto;
-     padding: 15px 15px 15px 15px;       
-     margin-top: 30px;
-     margin-bottom: 30px;
-     text-align: left;
-     font-size: 35px;
-     font-weight: 900;
-     font-stretch: ultra-expanded;
-     width:90%;
+    /* For paragraph*/
+    p   {
+      color: whitesmoke;
+      margin: auto;
+      padding: 15px 15px 15px 15px;       
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+      font-size: 35px;
+      font-weight: 900;
+      font-stretch: ultra-expanded;
+      width:90%;
      }
      
-h2.inset {border-style: inset;
-         border-width: 8px;
-         border-color: white;
-         border-radius: 5px;
-         width:87%;
-         }
+    h2.inset {
+      border-style: inset;
+      border-width: 8px;
+      border-color: white;
+      border-radius: 5px;
+      width:87%;
+      }
     
-hr.n0  {display: block;
-     border-style: inset;
-     border-width: 4px;
-     border-color: rgb(243, 138, 138);
-     margin-top: 50px;
-     margin-bottom: 10px;
-     width: 97%;
+    /* For upper line*/
+    hr.n0  {
+      display: block;
+      border-style: inset;
+      border-width: 4px;
+      border-color: rgb(243, 138, 138);
+      margin-top: 50px;
+      margin-bottom: 10px;
+      width: 97%;
     }
 
-hr.n1  {display: block;
-     border-style: inset;
-     border-width: 4px;
-     border-color: rgb(243, 138, 138);
-     margin-top: 10px;
-     margin-bottom: 50px;
-     width: 97%;
+    /* For lower line*/
+    hr.n1  {
+      display: block;
+      border-style: inset;
+      border-width: 4px;
+      border-color: rgb(243, 138, 138);
+      margin-top: 10px;
+      margin-bottom: 50px;
+      width: 97%;
     }
 
-.plot  {
+    /* For Plot borders*/
+    .plot  {
      border-style: inset;
      border-width: 10px;
      border-color: rgb(243, 138, 138);
-     }
+    }
 
-ul {background: transparent;
-    padding: 20px;
-   }
+    /* For list in footers*/
+    ul {
+       background: transparent;
+       padding: 20px;
+    }
     
-ul li {background: transparent;
+    ul li {
+       background: transparent;
        color: white;
        text-align: left;
        font-size: 30px;
        margin: 5px;
        list-style-type: circle;
-      }
+    }
 
-.wrapper {position: relative;
-         }
+    .wrapper {
+      position: relative;
+    }
 
-.column{flex: 50%;
-        padding: 5px;
-        }
+   /* For column*/
+    .column{
+      flex: 50%;
+      padding: 5px;
+    }
 
-.column{flex: 50%;
-        padding: 5px;
-        }
+   .row{
+    display: flex;
+    }
 
-.row{display: flex;
-        }
+    /* For dropdown lists*/
+   .dropbtn {
+      background-color: transparent;
+      color: rgb(218, 28, 28);
+      padding: 10px;
+      font-size: 1px;
+      border: none;
+      cursor: pointer;
+      justify-content: center;
+    }
 
+   .dropbtn:hover, .dropbtn:focus {
+      background-color: rgb(238, 201, 197);
+      width: auto;
+      height: 130px;
+    }
 
-.videoo {position: relative;
-        z-index: -1;
-        width:100%;
-        }
+   .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropbtn {
-  background-color: transparent;
-  color: rgb(218, 28, 28);
-  padding: 10px;
-  font-size: 1px;
-  border: none;
-  cursor: pointer;
-  justify-content: center;
-}
+   .dropdown-content {
+      position: relative;
+      background-color: rgb(210, 76, 103); 
+      color: black;
+      overflow: auto;
+      font-size: 30px;
+      font-family: "Times New Roman";
+      font-weight: bold;
+      width: 230px;
+      overflow: auto;
+      justify-content: center;
+      border-style: inset;
+      border-width: 3px;
+      border-color: crimson;
+      border-radius: 5px;
+      z-index: 1;
+    }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: rgb(238, 201, 197);
-  width: auto;
-  height: 130px;
-}
+    .dropdown-content a {
+      padding: 12px 16px;
+      text-decoration: none;
+    }
 
+    .dropdown a:hover {background-color: blue;}
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  position: relative;
-  background-color: rgb(210, 76, 103); 
-  color: black;
-  overflow: auto;
-  font-size: 30px;
-  font-family: "Times New Roman";
-  font-weight: bold;
-  width: 230px;
-  overflow: auto;
-  justify-content: center;
-  border-style: inset;
-  border-width: 3px;
-  border-color: crimson;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  padding: 12px 16px;
-  text-decoration: none;
-}
-
-.dropdown a:hover {background-color: blue;}
-
-.show {display: block;}
-  
-  /* Set a margin at the bottom for the map container */
-  #map {
-    margin-bottom: 40px; /* Adjust this value to your desired margin */
-  }
-
-  /* Optionally, set a border to visualize the margin */
-  #map {
-    border: 1px solid #ccc;
-  }
+    .show {display: block;}
 
   </style>
   
@@ -305,7 +303,8 @@ ul li {background: transparent;
 
 
 <body>
-
+  
+  <!-- Header start-->
   <header> 
     <div class="video">
         <video autoplay loop>
@@ -317,12 +316,14 @@ ul li {background: transparent;
         <h3>Welcome to a free interactive dashboard ECO-POP to explore and analyse Census and GDP data</h3>
     </div>
   </header>
+  <!-- Header end-->
 
   <div class="container">
-    
 
     <hr class="n0">
     <hr class="n1">
+
+  <!-- Section 1 start-->
     <div>
     <h2 class="inset">1) Population & GDP analysis by country </h2>
     </div>
@@ -331,12 +332,9 @@ ul li {background: transparent;
     </div>
    
     <div class="row justify-content-center">
-      
       <div class="col-md-3">
-        
         <div class="well" style="width: auto; height: auto;">
           <div class="row">
-            
             <div class="col-md-6">
               <div class="dropbtn">
               <h5>Country1:</h5>
@@ -368,7 +366,6 @@ ul li {background: transparent;
           </div>
 
           <div class="row">
-            
             <div class="col-md-6">
             <div class="dropbtn">
               <h5>Y-axis:</h5>
@@ -381,18 +378,8 @@ ul li {background: transparent;
               <select id="selDataset_against" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
             </div>
             </div>
-          
           </div>
-         
         </div>
-
-        <!--
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Demographic Info</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div> -->
       </div>
 
       <div class="col-md-5">
@@ -411,9 +398,12 @@ ul li {background: transparent;
       </div>
 
     </div>
-    
+  <!-- Section 1 end-->
+
     <hr class="n0">
     <hr class="n1">
+
+  <!-- Section 2 start-->
     <hr1>
     <div>
     <h2 class="inset">2) Global population anaylsis</h2>
@@ -426,7 +416,6 @@ ul li {background: transparent;
       
     </div>
     <div class="col-md-12">
-      
       <div class="row">
         <div class="row">
           <div class="col-md-6">
@@ -463,9 +452,12 @@ ul li {background: transparent;
         </div>
       </div>
     </div>
+  <!-- Section 2 end-->
 
     <hr class="n0">
     <hr class="n1">
+
+  <!-- Section 3 start-->
     <div>
     <h2 class="inset">3) Geographical visualisation</h2>
     </div>
@@ -474,7 +466,7 @@ ul li {background: transparent;
     </div>
 
     <div class="row" style="justify-content: center;">
-      <a href="http://stackoverflow.com"> 
+      <a href="http://127.0.0.1:5000/map"> 
         <button>
           <div class="myBtn">
             GoToMap
@@ -482,9 +474,12 @@ ul li {background: transparent;
         </button>
       </a>
     </div>
+  <!-- Section 3 end-->
 
     <hr class="n0">
     <hr class="n1">
+
+  <!-- Footer start-->
 
     <div class="row">
       <div class="column">
@@ -507,6 +502,7 @@ ul li {background: transparent;
        </ul>
      </div>
    </div>  
+   <!-- Footer end-->
 
   </div>
 
