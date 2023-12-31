@@ -5,69 +5,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project3_Group2</title>
-  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
 
+  <!-- Styling elements starts here-->
   <style>
-
-.overlayText {
-  position: absolute;
-  top: 30%;
-  left: 20%;
-  z-index: 1;
-}
-
-#topText {
-  color: white;
-  font-size: 20px;
-  align-self: center;
-}
-
-.centercontent {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (print), (prefers-reduced-motion: reduce) {
-  .animated {
+    /* To put element on top of another*/
+    .overlayText {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    z-index: 1;
+    }
+ 
+    /* For Earth animation*/
+    @media (print), (prefers-reduced-motion: reduce) {
+    .animated {
       -webkit-animation-duration: 1ms !important;
       animation-duration: 1ms !important;
       -webkit-transition-duration: 1ms !important;
       transition-duration: 1ms !important;
       -webkit-animation-iteration-count: 1 !important;
       animation-iteration-count: 1 !important;
-  }
-}
+     }
+    }
 
-.earth {
-  --d:800px;
-  width: var(--d);
-  height:var(--d);
-  display:inline-block;
-  margin: 5px;
-  border-radius: 50%;
-  box-shadow: -20px -20px 50px 2px #e28707 inset, 0 0 20px 2px #d5b825;
-  background: 
-    url(https://i.stack.imgur.com/3SLqF.jpg)
-    0/auto 100%;
-  animation: spin 3s linear infinite;
-}
+    .earth {
+      --d:800px;
+      width: var(--d);
+      height:var(--d);
+      display:inline-block;
+      margin: 5px;
+      border-radius: 50%;
+      box-shadow: -20px -20px 50px 2px #e28707 inset, 0 0 20px 2px #d5b825;
+      background: 
+        url(https://i.stack.imgur.com/3SLqF.jpg)
+        0/auto 100%;
+      animation: spin 3s linear infinite;
+    }
 
-@keyframes spin {
-  to {
-    background-position:200% 0;
-  }
-}
+    @keyframes spin {
+      to {
+      background-position:200% 0;
+     }
+    }
 
-#myVideo {
-  position: fixed;
-  right: 500px;
-  bottom: 500px;
-  width: 80px; 
-  height: 80px;
-  min-width: 50%; 
-  min-height: 50%;
-}
 
 .myBtn {
   width: 300px;
