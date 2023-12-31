@@ -31,6 +31,11 @@ def welcome():
     """List all available api routes."""
     return render_template("index.html")
 
+@app.route("/map")
+def render_map():
+    """Population map"""
+    return render_template("map.html")
+
 @app.route("/import_data")
 def import_data():
     # reflect an existing database into a new model
