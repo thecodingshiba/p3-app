@@ -2,9 +2,9 @@
 var map = L.map('map').setView([0, 0], 2);
 
 // Set up the tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   maxZoom: 18,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(map);
 
 var mapContainer = document.getElementById('map');
@@ -25,14 +25,11 @@ function populateDropdown() {
       return response.json();
     })
     .then(data => {
-      console.log (data)
-      // Assuming the API response is an array of objects with 'value' and 'label' properties
-      data.country.forEach(item => {
-        // console.log ('test');
-        // console.log(item);
+      const countryNames = data.country.sort(); // Sort the country names alphabetically
+      countryNames.forEach(country => {
         const option = document.createElement('option');
-        option.value = item; // Set the value attribute
-        option.text = item; // Set the text content
+        option.value = country;
+        option.text = country;
         mapCountryDropdown.appendChild(option);
       });
     })

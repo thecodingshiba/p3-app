@@ -5,40 +5,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>POPULATION VS GDP VISUALISATION</title>
+  <title>POPULATION VS GDP VISUALIZATION</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+  <style>
+
+    body {
+      background-color: rgb(173, 195, 188);
+      margin: 10px; /* Setting a margin for the whole content */
+    }
+
+    .jumbotron {
+      background-color: Black;
+      color: White;
+      margin-bottom: 10px; /* Adding space after the jumbotron */
+    }
+
+    .jumbotron h3 {
+      margin-top: 80px;
+    }
+
+    /* Adjust map width to fit the webpage */
+    #map {
+      width: 100%;
+      height: 800px; /* Adjusted height for better fit */
+      /* Add any other map styles here */
+    }
+
+    
+  </style>
 </head>
 
-<style>
-  /* Set a margin at the bottom for the map container */
-  #map {
-    margin-bottom: 40px; /* Adjust this value to your desired margin */
-  }
-
-  /* Optionally, set a border to visualize the margin */
-  #map {
-    border: 1px solid #ccc;
-  }
-</style>
-
 <body>
+  <div class="container-fluid"> <!-- Use container-fluid for full-width content -->
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h3>World Population</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <select id="countryDropdown" class="form-control"></select>
-            </div>
-            <div class="col-md-6">
-              <select id="mapYearDropdown" class="form-control"></select>
-            </div>
+        <h3>World Population</h3>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-4"> <!-- Center the dropdowns -->
+            <select id="countryDropdown" class="form-control"></select>
           </div>
+          <div class="col-md-2">
+            <select id="mapYearDropdown" class="form-control"></select>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div id="map" style="height: 500px;"></div>
+        <div id="map" style="height: 1000px;"></div>
       </div>
     </div>
   </div>
@@ -46,8 +62,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="../static/plot.js"></script>
   <script src="../static/YH_plot.js"></script>
 </body>
+
 </html>
