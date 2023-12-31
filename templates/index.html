@@ -324,7 +324,7 @@
     <hr class="n1">
 
   <!-- Section 1 start-->
-    <div>
+  <div>
     <h2 class="inset">1) Population & GDP analysis by country </h2>
     </div>
     <div>
@@ -379,13 +379,14 @@
             </div>
             </div>
           </div>
+          
         </div>
       </div>
 
       <div class="col-md-5">
-      <div style="margin-left: 50px;">
-        <div class="plot">
-        <div id="Duc_plot"></div>
+        <div style="margin-left: 50px;">
+          <div class="plot">
+          <div id="Duc_plot"></div>
         </div>
       </div>
       </div>
@@ -396,9 +397,56 @@
         </div>
       </div>
       </div>
-
+    
     </div>
+    
   <!-- Section 1 end-->
+    <hr class="n0">
+
+
+  <!-- Section 1.1 start-->
+
+  <!-- New Dropdown Panel Below X-axis Dropdown -->
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="well" style="width: auto; height: auto;">
+        <div class="row">
+          <div class="col-md-6">
+          <div class="dropbtn">
+            <h5>Y-axis:</h5>
+            <select id="selDataset_population_attribute" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="dropbtn">
+            <h5>X-axis:</h5>
+            <select id="selDataset_against" class="dropdown-content" onchange="optionChanged_duc(this.value)"></select>
+          </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div style="margin-left: 50px;">
+        <div class="plot">
+        <div id="Duc_plot_top_gdp"></div>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div style="margin-left: 10px;">
+      <div class="plot">
+      <div id="Duc_plot_bot_gdp"></div>
+      </div>
+    </div>
+    </div>
+  
+  </div>
+      
+
+  <!-- Section 1.1 end-->
 
     <hr class="n0">
     <hr class="n1">
