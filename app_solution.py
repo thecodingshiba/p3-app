@@ -11,10 +11,11 @@ from flask import render_template
 import psycopg2
 from flask import request
 
+from secret_key import secret_key
 #################################################
 # Database Setup
 #################################################
-
+engine_text=f"postgresql://bichjennings:{secret_key}@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require"
 
 # #################################################
 # # Flask Setup
@@ -39,8 +40,7 @@ def render_map():
 @app.route("/import_data")
 def import_data():
     # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
     metadata = MetaData()
 
     df = pd.read_csv("Combined00.csv")
@@ -131,8 +131,7 @@ def import_data():
 @app.route("/api/gdp")
 def gdp_data():
     # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
 
     Base = automap_base()
     # reflect the tables
@@ -152,8 +151,7 @@ def gdp_data():
 @app.route("/api/population_of_single_country")
 def population_data_single_country():
     # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
 
     Base = automap_base()
     # reflect the tables
@@ -179,8 +177,7 @@ def population_data_single_country():
 
 @app.route("/api/population")
 def population():
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
     # Create a MetaData object
     metadata = MetaData()
 
@@ -215,8 +212,7 @@ def population():
 @app.route("/api/region/<region>/<type>")
 def region_data(region=None,type=None):
     # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
 
     Base = automap_base()
     # reflect the tables
@@ -235,8 +231,7 @@ def region_data(region=None,type=None):
 
 app.route("/api/population_vs_gdp")
 def population_vs_gdp():
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
     
     with engine.connect() as connection:
         query = text("SELECT * FROM population_vs_gdp")
@@ -247,20 +242,30 @@ def population_vs_gdp():
     
     return jsonify(population_vs_gdp_data), 200
 @app.route("/api/population/<population_attribute>/<country1>&<country2>")
-def population_attribute(population_attribute, country1, country2):
+def population_attribute(population_attribute, country1, country2=""):
     # reflect an existing database into a new model
-    engine = create_engine(
-        "postgresql://bichjennings:ciL8Vd5SjUMY@ep-white-night-07545349.ap-southeast-1.aws.neon.tech/P3G2?sslmode=require")
+    engine = create_engine(engine_text)
+
     country1 = country1.replace("+"," ")
     country2 = country2.replace("+"," ")
+
     # Table name
     table_name = "population_vs_gdp"
-    #Set parameters
-    params = {"country1": country1, "country2": country2}
+
     # Create a select query using SQLAlchemy's select function
-    select_query = text(
-        f'SELECT "GDP", "Country", "Year", "{population_attribute}" FROM {table_name} WHERE "Country" IN (:country1, :country2);'
-    )
+
+    if country1.isdigit():
+        # Set parameters
+        params = {"country1": int(country1)}
+        select_query = text(
+            f'SELECT "GDP", "Country","Year", "{population_attribute}" FROM {table_name} WHERE "Year" = :country1;'
+        )
+    else:
+        # Set parameters
+        params = {"country1": country1, "country2": country2}
+        select_query = text(
+            f'SELECT "GDP", "Country", "Year", "{population_attribute}" FROM {table_name} WHERE "Country" IN (:country1, :country2);'
+        )
 
     with engine.connect() as conn:
         results = conn.execute(select_query,params)
