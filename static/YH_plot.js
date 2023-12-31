@@ -1,11 +1,16 @@
 // Initialize the Leaflet map
-var map = L.map('map').setView([0, 0], 2);
+var map = L.map('map', { scrollWheelZoom: false}).setView([0, 0], 2);
 
 // Set up the tile layer
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-  maxZoom: 18,
+  noWrap: true,     
+  bounds: [
+    [-5, -170],
+    [68, 180]
+  ],         //this is the crucial line!
   attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(map);
+
 
 var mapContainer = document.getElementById('map');
 mapContainer.style.marginBottom = '20px'; 
