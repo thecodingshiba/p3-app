@@ -43,9 +43,9 @@ def import_data():
     engine = create_engine(engine_text)
     metadata = MetaData()
 
-    df = pd.read_csv("Combined00.csv")
+    df = pd.read_csv("US_data.csv")
     # Table name
-    table_name = 'Population_vs_GDP'
+    table_name = 'population_vs_gdp'
 
     # Columns and their data types
     columns_and_types = [
