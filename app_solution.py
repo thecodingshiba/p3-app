@@ -258,7 +258,7 @@ def population_attribute(population_attribute, country1, country2=""):
         # Set parameters
         params = {"country1": int(country1)}
         select_query = text(
-            f'SELECT "GDP", "Country","Year", "{population_attribute}" FROM {table_name} WHERE "Year" = :country1;'
+            f'SELECT "GDP", "Country", "Year","{country2}", "{population_attribute}" FROM {table_name} WHERE "Year" = :country1 AND "{population_attribute}" > 0;'
         )
     else:
         # Set parameters
