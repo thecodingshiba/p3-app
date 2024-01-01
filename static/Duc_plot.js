@@ -283,6 +283,7 @@ let layout = {
       tickcolor: 'black',
       tickwidth: 3,
     }
+  
   },
   yaxis: {
     title: {
@@ -346,7 +347,6 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
      x: xData,
      y: yData,
      type: 'bar',
-     
      marker: {
       //color: data.map(x=> getColor(x)),
       color: '#ef6e04',},
@@ -365,13 +365,20 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
         bold: 'bold'  // Make the title bold
       }, },
      width: 550,
-     height: 400,
+     height: 500,
      plot_bgcolor: 'rgb(238, 206, 173)',
      paper_bgcolor: 'smokewhite',
      showlegend: false,
+     margin: {
+      l: 100,
+      r: 20,
+      b: 120,
+      t: 100,
+      pad: 1
+    },
      xaxis: {
        title: 'Countries',
-       tickangle: 36,
+       tickangle: 10,
        
     showline: true,  // Display x-axis line
     boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
