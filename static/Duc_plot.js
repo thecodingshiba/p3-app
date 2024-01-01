@@ -38,10 +38,10 @@ function load_bar_chart(){
     
       // Use the sorted and sliced data as needed
 
-      createBarChart(top5gdp,'Duc_plot_top_gdp',attribute="GDP",chart_title="The top 5 countries by GDP" + " in "+year)
-      createBarChart(top5gdp,'Duc_plot_top_attribute',attribute=att_Pop,chart_title="The top 5 countries by " + att_Pop + " in "+year)
-      createBarChart(bot5gdp,'Duc_plot_bot_gdp',attribute="GDP",chart_title="The bottom 5 countries by GDP" + " in "+year)
-      createBarChart(bot5gdp,'Duc_plot_bot_attribute',attribute=att_Pop,chart_title="The bottom 5 countries by " + att_Pop + " in "+year)
+      createBarChart(top5gdp,'Duc_plot_top_gdp',attribute="GDP",chart_title="The top 5 countries <br> by GDP" + " in "+year)
+      createBarChart(top5gdp,'Duc_plot_top_attribute',attribute=att_Pop,chart_title="The top 5 countries <br> by " + att_Pop + " in "+year)
+      createBarChart(bot5gdp,'Duc_plot_bot_gdp',attribute="GDP",chart_title="The bottom 5 countries <br> by GDP" + " in "+year)
+      createBarChart(bot5gdp,'Duc_plot_bot_attribute',attribute=att_Pop,chart_title="The bottom 5 countries <br> by " + att_Pop + " in "+year)
     })
     .catch(error => {
       console.error('Error fetching data:', error);
