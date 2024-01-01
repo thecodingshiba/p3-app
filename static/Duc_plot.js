@@ -62,8 +62,6 @@ function load_bar_chart(){
 
         let bot5gdp = x.data.sort((a, b) => a['GDP']- b['GDP']).slice(0, 5);
 
-  
-    
       // Use the sorted and sliced data as needed
 
       createBarChart(top5gdp,'Duc_plot_top_gdp',attribute="GDP",chart_title="The top 5 countries <br> by GDP" + " in "+year)
@@ -75,10 +73,6 @@ function load_bar_chart(){
       console.error('Error fetching data:', error);
     });
 }
-
-
-
-
 
 //Functions
 function optionChanged_duc(selectedValue) {
@@ -305,7 +299,7 @@ let layout = {
     titlefont: {
       family: 'Time New Roman',
       size: 25,
-      color: '#ef6e04n'
+      color: '#ef6e04'
     },
     tickfont: {
       family: 'Time New Roman',
@@ -352,18 +346,87 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
      x: xData,
      y: yData,
      type: 'bar',
+     
+     marker: {
+      //color: data.map(x=> getColor(x)),
+      color: '#ef6e04',},
      text: data.map(y => `${attribute}: ${formatGDP(y[attribute])}`),
      hoverinfo: 'text',
    };
  
    // Set up layout
    const layout = {
-     title: chart_title,
+     
+     title: {text:chart_title,
+      font: {
+        size: 28,  // Set the font size
+        family: 'Time New Roman',  // Use a modern sans-serif font
+        color: '#ef6e04',  // Set the font color
+        bold: 'bold'  // Make the title bold
+      }, },
+     width: 550,
+     height: 400,
+     plot_bgcolor: 'rgb(238, 206, 173)',
+     paper_bgcolor: 'smokewhite',
+     showlegend: false,
      xaxis: {
-       title: 'Country',
+       title: 'Countries',
+       tickangle: 36,
+       
+    showline: true,  // Display x-axis line
+    boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+    zeroline: false,  // Do not display x-axis baseline
+    linecolor: 'black',  // Set x-axis line color
+    linewidth: 3, // Set x-axis line width
+    ticklen: 10,
+    tickwidth: 3,
+    tickcolor: 'black',
+    showgrid: false,
+    titlefont: {
+      family: 'Time New Roman',
+      size: 25,
+      color: '#ef6e04'
+    },
+    tickfont: {
+      family: 'Time New Roman',
+      size: 20,
+      color: 'black'
+    },
+    linecolor: '#636363',
+    linewidth: 6,
+    minor: {
+      ticks: 'inside',
+      ticklen: 50,
+      tickcolor: 'black',
+      tickwidth: 3,
+    },
+    
+    
+    
      },
      yaxis: {
        title: attribute,
+       showline: true,  // Display x-axis line
+    boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
+    zeroline: false,  // Do not display x-axis baseline
+    linecolor: 'black',  // Set x-axis line color
+    linewidth: 3, // Set x-axis line width
+    ticklen: 10,
+    tickwidth: 3,
+    tickcolor: 'black',
+    
+    titlefont: {
+      family: 'Time New Roman',
+      size: 25,
+      color: '#ef6e04'
+    },
+    tickfont: {
+      family: 'Time New Roman',
+      size: 20,
+      color: 'black'
+    },
+    linecolor: '#636363',
+    linewidth: 6
      },
    };
  
