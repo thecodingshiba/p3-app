@@ -1,16 +1,11 @@
 // Initialize the Leaflet map
-var map = L.map('map', { scrollWheelZoom: false}).setView([0, 0], 2);
+var map = L.map('map').setView([0, 0], 2);
 
 // Set up the tile layer
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-  noWrap: true,     
-  bounds: [
-    [-5, -170],
-    [68, 180]
-  ],         //this is the crucial line!
-  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
 
 var mapContainer = document.getElementById('map');
 mapContainer.style.marginBottom = '20px'; 
@@ -30,11 +25,14 @@ function populateDropdown() {
       return response.json();
     })
     .then(data => {
-      const countryNames = data.country.sort(); // Sort the country names alphabetically
-      countryNames.forEach(country => {
+      console.log (data)
+      // Assuming the API response is an array of objects with 'value' and 'label' properties
+      data.country.forEach(item => {
+        // console.log ('test');
+        // console.log(item);
         const option = document.createElement('option');
-        option.value = country;
-        option.text = country;
+        option.value = item; // Set the value attribute
+        option.text = item; // Set the text content
         mapCountryDropdown.appendChild(option);
       });
     })
