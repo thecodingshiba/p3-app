@@ -364,15 +364,18 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
         color: '#ef6e04',  // Set the font color
         bold: 'bold'  // Make the title bold
       }, },
-     width: 550,
-     height: 400,
+     width: 700,
+     height: 550,
      plot_bgcolor: 'rgb(238, 206, 173)',
      paper_bgcolor: 'smokewhite',
      showlegend: false,
      xaxis: {
-       title: 'Countries',
-       tickangle: 36,
-       
+      title: {
+        text: 'Countries',
+        standoff: 30, // Adjust the standoff value for the desired gap
+      },
+      tickangle: 45,
+    
     showline: true,  // Display x-axis line
     boxmode: 'group',  // Set boxmode to 'group' to draw the axis box around the entire plot
     zeroline: false,  // Do not display x-axis baseline
@@ -399,11 +402,15 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
       ticklen: 50,
       tickcolor: 'black',
       tickwidth: 3,
-    },
-    
-    
-    
+    },    
      },
+     margin: {
+      l: 100, // Increase left margin
+      r: 20,
+      b: 200, // Increase bottom margin
+      t: 100,
+      pad: 10,
+    },
      yaxis: {
        title: attribute,
        showline: true,  // Display x-axis line
