@@ -1,5 +1,7 @@
 // Define the URL for the JSON file
 const jsonUrl    = "http://127.0.0.1:5000/api/population";
+let loopInterval;
+let currentIndex = 0;
 
 // Container and dropdown selection
 const container  = d3.select("#well");
@@ -16,8 +18,35 @@ const ducPlotContainer1 = d3.select("#Duc_plot");
 const ducPlotContainer2 = d3.select("#Duc_plot_2");
 const ducPlotContainer3 = d3.select("#Duc_plot_top_gdp");
 
+const button = document.getElementById('loopButton');
+button.textContent = 'Run Timeline'
+
 ducPlotContainer1.text("Loading...");
 ducPlotContainer2.text("Loading...");
+
+function startStopLoop() {
+  const options = dropdown8.node().options; // Use .node() to get the DOM element
+  console.log(button.textContent)
+  if (button.textContent === 'Run Timeline') {
+    button.textContent = 'Timeline running';
+
+    loopInterval = setInterval(() => {
+      // Increment the index or reset to 0 if at the end
+      currentIndex = (currentIndex + 1) % options.length;
+
+      // Select the option at the updated index
+      dropdown8.node().selectedIndex = currentIndex;
+
+      // Trigger the 'change' event on the dropdown to make sure associated actions are performed
+      const event = new Event('change');
+      dropdown8.node().dispatchEvent(event);
+    }, 3000);
+  } else {
+    button.textContent = 'Run Timeline';
+    dropdown8.node().selectedIndex =options.length-1;
+    clearInterval(loopInterval);
+  }
+}
 
 function load_bar_chart(){
       // Assign the value of the dropdown menu option to a variable
@@ -25,7 +54,6 @@ function load_bar_chart(){
   let year= dropdown8.property("value");
 
   jsonUrl_bar='http://127.0.0.1:5000/api/population/GDP' + '/' +year +'&' +att_Pop
-  console.log(jsonUrl_bar)
   d3.json(jsonUrl_bar)
     .then(x => {
       // Get value
