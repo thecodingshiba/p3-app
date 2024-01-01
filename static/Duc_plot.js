@@ -406,11 +406,15 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
       ticklen: 50,
       tickcolor: 'black',
       tickwidth: 3,
-    },
-    
-    
-    
+    },    
      },
+     margin: {
+      l: 100, // Increase left margin
+      r: 20,
+      b: 200, // Increase bottom margin
+      t: 100,
+      pad: 10,
+    },
      yaxis: {
        title: attribute,
        showline: true,  // Display x-axis line
