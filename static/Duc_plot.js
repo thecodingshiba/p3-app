@@ -1,5 +1,7 @@
 // Define the URL for the JSON file
 const jsonUrl    = "http://127.0.0.1:5000/api/population";
+let loopInterval;
+let currentIndex = 0;
 
 // Container and dropdown selection
 const container  = d3.select("#well");
@@ -9,12 +11,74 @@ const dropdown3  = d3.select("#selDataset_population_attribute");
 const dropdown4  = d3.select("#selDataset_to_year");
 const dropdown5  = d3.select("#selDataset_2");
 const dropdown6  = d3.select("#selDataset_against");
+const dropdown7  = d3.select("#selDataset_gdp_bar");
+const dropdown8  = d3.select("#selDataset_year_bar");
 
 const ducPlotContainer1 = d3.select("#Duc_plot");
 const ducPlotContainer2 = d3.select("#Duc_plot_2");
+const ducPlotContainer3 = d3.select("#Duc_plot_top_gdp");
+
+const button = document.getElementById('loopButton');
+button.textContent = 'Run Timeline'
 
 ducPlotContainer1.text("Loading...");
 ducPlotContainer2.text("Loading...");
+
+function startStopLoop() {
+  const options = dropdown8.node().options; // Use .node() to get the DOM element
+  console.log(button.textContent)
+  if (button.textContent === 'Run Timeline') {
+    button.textContent = 'Timeline running';
+
+    loopInterval = setInterval(() => {
+      // Increment the index or reset to 0 if at the end
+      currentIndex = (currentIndex + 1) % options.length;
+
+      // Select the option at the updated index
+      dropdown8.node().selectedIndex = currentIndex;
+
+      // Trigger the 'change' event on the dropdown to make sure associated actions are performed
+      const event = new Event('change');
+      dropdown8.node().dispatchEvent(event);
+    }, 3000);
+  } else {
+    button.textContent = 'Run Timeline';
+    dropdown8.node().selectedIndex =options.length-1;
+    clearInterval(loopInterval);
+  }
+}
+
+function load_bar_chart(){
+      // Assign the value of the dropdown menu option to a variable
+  let att_Pop = dropdown7.property("value");
+  let year= dropdown8.property("value");
+
+  jsonUrl_bar='http://127.0.0.1:5000/api/population/GDP' + '/' +year +'&' +att_Pop
+  d3.json(jsonUrl_bar)
+    .then(x => {
+      // Get value
+
+        let top5gdp= x.data.sort((a, b) => b['GDP']- a['GDP']).slice(0, 5); //Exclude those have value<=0
+
+        let bot5gdp = x.data.sort((a, b) => a['GDP']- b['GDP']).slice(0, 5);
+
+  
+    
+      // Use the sorted and sliced data as needed
+
+      createBarChart(top5gdp,'Duc_plot_top_gdp',attribute="GDP",chart_title="The top 5 countries <br> by GDP" + " in "+year)
+      createBarChart(top5gdp,'Duc_plot_top_attribute',attribute=att_Pop,chart_title="The top 5 countries <br> by " + att_Pop + " in "+year)
+      createBarChart(bot5gdp,'Duc_plot_bot_gdp',attribute="GDP",chart_title="The bottom 5 countries <br> by GDP" + " in "+year)
+      createBarChart(bot5gdp,'Duc_plot_bot_attribute',attribute=att_Pop,chart_title="The bottom 5 countries <br> by " + att_Pop + " in "+year)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+}
+
+
+
+
 
 //Functions
 function optionChanged_duc(selectedValue) {
@@ -64,6 +128,14 @@ function initiateDropdown(){
       .attr("value", d => d)
       .text(d => d);
 
+      const options8 = dropdown8
+      .selectAll("option")
+      .data(x.year.sort())
+      .enter()
+      .append("option")
+      .attr("value", d => d)
+      .text(d => d);
+
         // Create options for the dropdown Year
         const options4 = dropdown4
         .selectAll("option")
@@ -73,8 +145,17 @@ function initiateDropdown(){
         .attr("value", d => d)
         .text(d => d);
 
-      // Create options for the dropdown Population Attribute
+      // Create options for the dropdown Y-axis
       const options3 = dropdown3
+      .selectAll("option")
+      .data(x.population_attribute.sort())
+      .enter()
+      .append("option")
+      .attr("value", d => d)
+      .text(d => d);
+
+      // Create options for the dropdown Population Attribute
+      const options7 = dropdown7
       .selectAll("option")
       .data(x.population_attribute.sort())
       .enter()
@@ -92,6 +173,7 @@ function initiateDropdown(){
     .text(d => d);
 
     loadData()
+    load_bar_chart()
 })
   }
 
@@ -245,6 +327,51 @@ let plotContainer;
   Plotly.newPlot(location, [lineGraph], layout, { displayModeBar: false });
 
 }
+
+function formatGDP(value) {
+  if (value >= 1e12) {
+    return `${(value / 1e12).toFixed(2)}T`;
+  } else if (value >= 1e9) {
+    return `${(value / 1e9).toFixed(2)}B`;
+  } else if (value >= 1e6) {
+    return `${(value / 1e6).toFixed(2)}M`;
+  } else if (value >= 1e3) {
+    return `${(value / 1e3).toFixed(2)}K`;
+  } else {
+    return `${value.toFixed(2)}`;
+  }
+}
+
+function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
+   // Extract x and y data
+   const xData = data.map(x => x["Country"]);
+   const yData = data.map(z => z[attribute]);
+ 
+   // Create Plotly bar graph object
+   const barGraph = {
+     x: xData,
+     y: yData,
+     type: 'bar',
+     text: data.map(y => `${attribute}: ${formatGDP(y[attribute])}`),
+     hoverinfo: 'text',
+   };
+ 
+   // Set up layout
+   const layout = {
+     title: chart_title,
+     xaxis: {
+       title: 'Country',
+     },
+     yaxis: {
+       title: attribute,
+     },
+   };
+ 
+   // Plot using Plotly
+   Plotly.newPlot(containner_chart, [barGraph], layout);
+ }
+
 initiateDropdown()
 // Call updatePlotly() when a change takes place to the DOM
 d3.selectAll("#selDataset, #selDataset_2, #selDataset_from_year, #selDataset_population_attribute, #selDataset_to_year, #selDataset_against").on("change", loadData);
+d3.selectAll("#selDataset_gdp_bar,#selDataset_year_bar").on('change',load_bar_chart)
