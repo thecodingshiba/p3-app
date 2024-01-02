@@ -242,7 +242,7 @@ function plot_scatter_plot(data,location,country){
     // Set the size of the plot
     // Set the size of the plot
 let layout = {
-  width: 700,
+  width: 600,
   height: 500,
   plot_bgcolor: 'rgb(238, 206, 173)',
   paper_bgcolor: 'smokewhite',
@@ -259,7 +259,7 @@ let layout = {
     x: 0.5,  // Set the title position to the center
     font: {
       size: 28,  // Set the font size
-      family: 'Time New Roman',  // Use a modern sans-serif font
+      family: "Arial, Helvetica, sans-serif",  // Use a modern sans-serif font
       color: '#ef6e04',  // Set the font color
       bold: 'bold'  // Make the title bold
     }
@@ -279,12 +279,12 @@ let layout = {
     tickcolor: 'black',
     showgrid: false,
     titlefont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 25,
       color: '#ef6e04'
     },
     tickfont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 20,
       color: 'black'
     },
@@ -311,12 +311,12 @@ let layout = {
     tickwidth: 3,
     tickcolor: 'black',
     titlefont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 25,
       color: '#ef6e04'
     },
     tickfont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 20,
       color: 'black'
     },
@@ -373,11 +373,11 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
      title: {text:chart_title,
       font: {
         size: 28,  // Set the font size
-        family: 'Time New Roman',  // Use a modern sans-serif font
+        family: "Arial, Helvetica, sans-serif",  // Use a modern sans-serif font
         color: '#ef6e04',  // Set the font color
         bold: 'bold'  // Make the title bold
       }, },
-     width: 700,
+     width: 600,
      height: 500,
      plot_bgcolor: 'rgb(238, 206, 173)',
      paper_bgcolor: 'smokewhite',
@@ -403,12 +403,12 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
     tickcolor: 'black',
     showgrid: false,
     titlefont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 25,
       color: '#ef6e04'
     },
     tickfont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 20,
       color: 'black'
     },
@@ -434,12 +434,12 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
     tickcolor: 'black',
     
     titlefont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 25,
       color: '#ef6e04'
     },
     tickfont: {
-      family: 'Time New Roman',
+      family: "Arial, Helvetica, sans-serif",
       size: 20,
       color: 'black'
     },

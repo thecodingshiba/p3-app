@@ -35,7 +35,7 @@ function showBubble(data) {
     title: region_label +' '+ type_label+ ' vs Year',
     font: {
       size: 28,  // Set the font size
-      family: 'Time New Roman',  // Use a modern sans-serif font
+      family: "Arial, Helvetica, sans-serif",  // Use a modern sans-serif font
       color: '#ef6e04',  // Set the font color
       bold: 'bold'  // Make the title bold
     },
@@ -54,12 +54,12 @@ function showBubble(data) {
       tickcolor: 'black',
       showgrid: false,
       titlefont: {
-        family: 'Time New Roman',
+        family: "Arial, Helvetica, sans-serif",
         size: 25,
         color: '#ef6e04'
       },
       tickfont: {
-        family: 'Time New Roman',
+        family: "Arial, Helvetica, sans-serif",
         size: 20,
         color: 'black'
       },
@@ -85,12 +85,12 @@ function showBubble(data) {
       tickwidth: 3,
       tickcolor: 'black',
       titlefont: {
-        family: 'Time New Roman',
+        family: "Arial, Helvetica, sans-serif",
         size: 25,
         color: '#ef6e04'
       },
       tickfont: {
-        family: 'Time New Roman',
+        family: "Arial, Helvetica, sans-serif",
         size: 20,
         color: 'black'
       },
