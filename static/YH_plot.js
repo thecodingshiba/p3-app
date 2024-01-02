@@ -3,7 +3,11 @@ var map = L.map('map').setView([0, 0], 2);
 
 // Set up the tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
+  noWrap: true,     
+  bounds: [
+    [-5, -170],
+    [68, 180]
+  ],         //this is the crucial line!
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
