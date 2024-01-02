@@ -365,14 +365,14 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
         bold: 'bold'  // Make the title bold
       }, },
      width: 550,
-     height: 500,
+     height: 400,
      plot_bgcolor: 'rgb(238, 206, 173)',
      paper_bgcolor: 'smokewhite',
      showlegend: false,
      margin: {
       l: 100,
       r: 20,
-      b: 120,
+      b: 100,
       t: 100,
       pad: 1
     },
@@ -408,13 +408,7 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
       tickwidth: 3,
     },    
      },
-     margin: {
-      l: 100, // Increase left margin
-      r: 20,
-      b: 200, // Increase bottom margin
-      t: 100,
-      pad: 10,
-    },
+     
      yaxis: {
        title: attribute,
        showline: true,  // Display x-axis line
