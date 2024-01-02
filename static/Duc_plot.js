@@ -26,7 +26,6 @@ ducPlotContainer2.text("Loading...");
 
 function startStopLoop() {
   const options = dropdown8.node().options; // Use .node() to get the DOM element
-  console.log(button.textContent)
   if (button.textContent === 'Run Timeline') {
     button.textContent = 'Timeline running';
 
@@ -166,6 +165,13 @@ function initiateDropdown(){
     .attr("value", d => d)
     .text(d => d);
 
+    // Select the option at the updated index
+    dropdown.property("value", 'United States of America');
+    dropdown5.property("value", 'China');
+    dropdown4.node().selectedIndex = dropdown4.node().options.length - 1;
+    dropdown3.property("value", 'Pop07(k)');
+    dropdown7.property("value", 'NetMigrationRate');
+
     loadData()
     load_bar_chart()
 })
@@ -236,11 +242,18 @@ function plot_scatter_plot(data,location,country){
     // Set the size of the plot
     // Set the size of the plot
 let layout = {
-  width: 550,
+  width: 700,
   height: 500,
   plot_bgcolor: 'rgb(238, 206, 173)',
   paper_bgcolor: 'smokewhite',
   showlegend: false,
+  margin: {
+    l: 100,
+    r: 20,
+    b: 100,
+    t: 100,
+    pad: 1
+  },
   title: {
     text: `<span style="font-size: larger;">${country}</span><br> ${selectedKey} by ${selectedKey_x} from ${dropdown2.property("value")} to ${dropdown4.property("value")}`,  // Set the title text
     x: 0.5,  // Set the title position to the center
@@ -364,7 +377,7 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
         color: '#ef6e04',  // Set the font color
         bold: 'bold'  // Make the title bold
       }, },
-     width: 550,
+     width: 700,
      height: 500,
      plot_bgcolor: 'rgb(238, 206, 173)',
      paper_bgcolor: 'smokewhite',
@@ -372,7 +385,7 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
      margin: {
       l: 100,
       r: 20,
-      b: 120,
+      b: 100,
       t: 100,
       pad: 1
     },
@@ -408,13 +421,7 @@ function createBarChart(data,containner_chart,attribute="GDP",chart_title="") {
       tickwidth: 3,
     },    
      },
-     margin: {
-      l: 100, // Increase left margin
-      r: 20,
-      b: 200, // Increase bottom margin
-      t: 100,
-      pad: 10,
-    },
+     
      yaxis: {
        title: attribute,
        showline: true,  // Display x-axis line
