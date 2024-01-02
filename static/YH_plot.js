@@ -15,9 +15,10 @@ mapCountryDropdown.addEventListener('change', mapPopulationDropdownChange);
 
 const mapYearDropdown = document.getElementById('mapYearDropdown');
 mapYearDropdown.addEventListener('change', mapPopulationDropdownChange);
+
 // Function to populate the dropdown from an API
 function populateDropdown() {
-  fetch('http://127.0.0.1:5000/api/population') // Replace with your API endpoint
+  fetch('http://127.0.0.1:5000/api/population')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok.');
@@ -25,16 +26,23 @@ function populateDropdown() {
       return response.json();
     })
     .then(data => {
-      console.log (data)
-      // Assuming the API response is an array of objects with 'value' and 'label' properties
-      data.country.forEach(item => {
-        // console.log ('test');
-        // console.log(item);
+      const mapCountryDropdown = document.getElementById('countryDropdown');
+      
+      // Sort country names alphabetically
+      data.country.sort((a, b) => a.localeCompare(b));
+
+      data.country.forEach(country => {
         const option = document.createElement('option');
-        option.value = item; // Set the value attribute
-        option.text = item; // Set the text content
+        option.value = country;
+        option.textContent = country;
         mapCountryDropdown.appendChild(option);
       });
+
+      // Add event listener for country dropdown change
+      mapCountryDropdown.addEventListener('change', mapPopulationDropdownChange);
+
+      // Trigger initial mapPopulationDropdownChange to populate the map on page load
+      mapPopulationDropdownChange();
     })
     .catch(error => {
       console.error('Error fetching data:', error);

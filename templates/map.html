@@ -11,39 +11,92 @@
 
   <style>
 
+    /* Your existing styles */
     body {
-      background-color: rgb(173, 195, 188);
-      margin: 10px; /* Setting a margin for the whole content */
+      background-image: url('../../static/B1.png');
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      height: auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+      /* Other styles... */
     }
 
     .jumbotron {
+      background-image: url('../../static/B1.png');
       background-color: Black;
       color: White;
       margin-bottom: 10px; /* Adding space after the jumbotron */
     }
 
-    .jumbotron h3 {
-      margin-top: 80px;
+    .jumbotron h2.inset {
+      color: linear-gradient(#808080, rgb(244, 244, 247));
+      margin: auto;
+      padding: 15px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      text-align: left;
+      font-size: 40px;
+      font-weight: 40;
+      text-decoration: line-through;
+      background: -webkit-linear-gradient(#f3f696, #f4e79d,  crimson);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: Arial;
+    }
+
+    .jumbotron p {
+      color: whitesmoke;
+      margin: auto;
+      padding: 15px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: 500;
+      font-stretch: ultra-expanded;
+      width: 90%;
+      font-family: Arial;
+    }
+
+    h3#worldPopulationHeader {
+      color: linear-gradient(#ef6e04,  crimson);
+      font-family: Arial;
+      font-size: 14;
+      height: auto;
+      width: auto;
+      margin: auto;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      background: -webkit-linear-gradient(#f3f696, #f4e79d, crimson);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      z-index: 1;
     }
 
     /* Adjust map width to fit the webpage */
     #map {
-      width: 100%;
-      height: 800px; /* Adjusted height for better fit */
+      width: 70%; /* Adjusted width */
+      margin: auto; /* Centering the map */
+      height: 500px; /* Adjusted height */
       /* Add any other map styles here */
     }
-
-    
   </style>
 </head>
 
 <body>
-  <div class="container-fluid"> <!-- Use container-fluid for full-width content -->
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h3>World Population</h3>
+        <h2 class="inset">3) Geographical visualization</h2>
+        <p>The following geographic visualization provides information of a country's population for a given year between 1960 and 2021.</p>
+        <h3 id="worldPopulationHeader">World Population</h3>
         <div class="row">
-          <div class="col-md-2 col-md-offset-4"> <!-- Center the dropdowns -->
+          <div class="col-md-2 col-md-offset-4">
             <select id="countryDropdown" class="form-control"></select>
           </div>
           <div class="col-md-2">
@@ -54,7 +107,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div id="map" style="height: 1000px;"></div>
+        <div id="map"></div>
       </div>
     </div>
   </div>
@@ -66,3 +119,4 @@
 </body>
 
 </html>
+
