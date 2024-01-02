@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>POPULATION VS GDP VISUALISATION</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<style>
+  /* Set a margin at the bottom for the map container */
+  #map {
+    margin-bottom: 40px; /* Adjust this value to your desired margin */
+  }
+
+  /* Optionally, set a border to visualize the margin */
+  #map {
+    border: 1px solid #ccc;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>POPULATION VS GDP</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="well" style="width: 280px; height: 320px;">
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Country:</h5>
+              <select id="selDataset" style="font-size: 10px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>vs Country:</h5>
+              <select id="selDataset_2" style="font-size: 10px;" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h5>From Year:</h5>
+              <select id="selDataset_from_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+            <div class="col-md-6">
+              <h5>To Year:</h5>
+              <select id="selDataset_to_year" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+            </div>
+          </div>
+
+          <h5>Population Attribute:</h5>
+          <select id="selDataset_population_attribute" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+        
+          <h5>against:</h5>
+          <select id="selDataset_against" class="form-control" onchange="optionChanged_duc(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="Duc_plot"></div>
+      </div>
+      <div class="col-md-4">
+        <div id="Duc_plot_2"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h3>Regional Populations</h3>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="jumbotron col-md-3">
+        <div class="row">
+          <div >
+            <h5>Region:</h5>
+            <select id="region_option" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="WORLD">WORLD</option>
+              <option value="AFRICA">AFRICA</option>
+              <option value="ASIA">ASIA</option>
+              <option value="EUROPE">EUROPE</option>
+              <option value="LATIN_AMERICA_AND_THE_CARIBBEAN">LATIN AMERICA AND THE CARIBBEAN</option>
+              <option value="NORTHERN_AMERICA">NORTHERN AMERICA</option>
+              <option value="OCEANIA">OCEANIA</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div >
+            <h5>Type:</h5>
+            <select id="type" class="form-control" onchange="region_option_changed(this.value)">
+              <option value="totpopjan_thousands">Total Population '000</option>
+              <option value="popdensity_personssqkm">Population Density per sq/km</option>
+              <option value="medage_years">Median Age in Years</option>
+              <option value="totfertilityrate">Total Fertility Rate</option>
+              <option value="fmortalitybeforeage40_per1000">Female Mortality Rate Before 40 Years '000</option>
+            </select>
+          </div>
+          </div>
+      </div>
+      <div class="col-md-9">
+      <div id="bubble"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h3>World Population</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <select id="countryDropdown" class="form-control"></select>
+            </div>
+            <div class="col-md-6">
+              <select id="mapYearDropdown" class="form-control"></select>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map" style="height: 500px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/plot.js"></script>
+  <script src="../static/Duc_plot.js"></script>
+  <script src="../static/Bich_plot.js"></script>
+  <script src="../static/YH_plot.js"></script>
+</body>
+</html>
